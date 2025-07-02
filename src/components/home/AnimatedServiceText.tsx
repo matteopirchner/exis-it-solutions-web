@@ -39,7 +39,7 @@ const AnimatedServiceText = () => {
     const startProgressTimer = () => {
       progressInterval = setInterval(() => {
         setProgress(prev => {
-          const newProgress = prev + (100 / 60); // 6 Sekunden bis 100%
+          const newProgress = prev + (100 / 64); // 6.4 Sekunden bis 100%
           
           // Wenn Progress Bar voll ist, Text wechseln
           if (newProgress >= 100) {
