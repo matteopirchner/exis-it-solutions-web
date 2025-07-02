@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Cookie, Settings, Shield, CheckCircle, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -42,10 +43,11 @@ const Cookies = () => {
       console.log('Analytics disabled');
     }
     
-    // Show success notification
+    // Show success notification that auto-dismisses
     toast({
       title: "Einstellungen gespeichert",
       description: "Ihre Cookie-Einstellungen wurden erfolgreich aktualisiert.",
+      duration: 3000, // Auto-dismiss after 3 seconds
     });
   };
 
