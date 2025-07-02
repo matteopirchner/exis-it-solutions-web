@@ -9,9 +9,17 @@ import CounterAnimation from "@/components/CounterAnimation";
 
 const Index = () => {
   const smoothScroll = (elementId: string) => {
+    if (elementId === 'top') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      return;
+    }
+    
     const element = document.getElementById(elementId);
     if (element) {
-      const offsetTop = element.offsetTop - 120; // 120px offset for better spacing from navbar
+      const offsetTop = element.offsetTop - 80; // Reduced offset from 120px to 80px
       window.scrollTo({
         top: offsetTop,
         behavior: 'smooth'
@@ -25,14 +33,21 @@ const Index = () => {
       <nav className="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/20">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center space-x-2">
+            <button onClick={() => smoothScroll('top')} className="flex items-center space-x-2 hover:scale-105 transition-transform duration-300">
               <img 
                 src="/lovable-uploads/a4979dec-233f-4407-a953-c36de27959ab.png" 
                 alt="exis Solutions" 
-                className="h-12 hover:scale-105 transition-transform duration-300"
+                className="h-12"
               />
-            </Link>
+            </button>
             <div className="hidden md:flex items-center space-x-8">
+              <button 
+                onClick={() => smoothScroll('top')} 
+                className="text-gray-700 hover:text-[#8B1538] transition-all duration-300 hover:scale-105 relative group"
+              >
+                Start
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B1538] transition-all duration-300 group-hover:w-full"></span>
+              </button>
               <button 
                 onClick={() => smoothScroll('about')} 
                 className="text-gray-700 hover:text-[#8B1538] transition-all duration-300 hover:scale-105 relative group"
@@ -137,7 +152,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Section with Parallax Effect */}
       <section id="about" className="py-20 bg-white relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white"></div>
         <div className="container mx-auto px-4 relative z-10">
@@ -184,7 +198,6 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Testimonials */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <div className="flex items-center mb-4">
@@ -218,7 +231,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Services Section with 3D Effects */}
       <section id="services" className="py-20 bg-gradient-to-br from-gray-900 to-black text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%22100%22%20height%3D%22100%22%20viewBox%3D%220%200%20100%20100%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%3E%3Cpath%20d%3D%22M11%2018c3.866%200%207-3.134%207-7s-3.134-7-7-7-7%203.134-7%207%203.134%207%207%207zm48%2025c3.866%200%207-3.134%207-7s-3.134-7-7-7-7%203.134-7%207%203.134%207%207%207zm-43-7c1.657%200%203-1.343%203-3s-1.343-3-3-3-3%201.343-3%203%201.343%203%203%203zm63%2031c1.657%200%203-1.343%203-3s-1.343-3-3-3-3%201.343-3%203%201.343%203%203%203z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
         
@@ -306,7 +318,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Hosting Highlight Section */}
       <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-100">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -347,7 +358,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
       <section id="faq" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
@@ -397,7 +407,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
       <section id="contact" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -451,7 +460,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-gradient-to-r from-gray-900 to-black text-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -495,7 +503,6 @@ const Index = () => {
         </div>
       </footer>
 
-      {/* Cookie Banner */}
       <CookieBanner />
     </div>
   );

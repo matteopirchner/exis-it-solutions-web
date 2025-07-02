@@ -4,6 +4,25 @@ import { Building, Mail, Globe, Scale } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Impressum = () => {
+  const smoothScroll = (elementId: string) => {
+    if (elementId === 'top') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      return;
+    }
+    
+    const element = document.getElementById(elementId);
+    if (element) {
+      const offsetTop = element.offsetTop - 80;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
@@ -18,8 +37,12 @@ const Impressum = () => {
               />
             </Link>
             <div className="hidden md:flex items-center space-x-8">
+              <Link to="/" className="text-gray-700 hover:text-[#8B1538] transition-all duration-300 hover:scale-105 relative group">
+                Start
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B1538] transition-all duration-300 group-hover:w-full"></span>
+              </Link>
               <Link to="/#about" className="text-gray-700 hover:text-[#8B1538] transition-all duration-300 hover:scale-105 relative group">
-                Allgemeines
+                Über Exis
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B1538] transition-all duration-300 group-hover:w-full"></span>
               </Link>
               <Link to="/#services" className="text-gray-700 hover:text-[#8B1538] transition-all duration-300 hover:scale-105 relative group">
@@ -28,10 +51,6 @@ const Impressum = () => {
               </Link>
               <Link to="/#faq" className="text-gray-700 hover:text-[#8B1538] transition-all duration-300 hover:scale-105 relative group">
                 Fragen
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B1538] transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-              <Link to="/#contact" className="text-gray-700 hover:text-[#8B1538] transition-all duration-300 hover:scale-105 relative group">
-                Kontakt Info
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B1538] transition-all duration-300 group-hover:w-full"></span>
               </Link>
               <Button className="bg-[#8B1538] hover:bg-[#8B1538]/90 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
@@ -161,6 +180,42 @@ const Impressum = () => {
                           Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer 
                           Verbraucherschlichtungsstelle teilzunehmen.
                         </p>
+                      </div>
+                    </div>
+
+                    <div className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-2xl p-6 border border-orange-200">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                        <Scale className="w-5 h-5 mr-3 text-orange-600" />
+                        Haftungsausschluss
+                      </h3>
+                      <div className="bg-white rounded-xl p-6 shadow-sm space-y-4">
+                        <div>
+                          <h4 className="font-semibold text-gray-900 mb-2">Haftung für Inhalte</h4>
+                          <p className="text-gray-600 text-sm leading-relaxed">
+                            Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den 
+                            allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht 
+                            unter der Verpflichtung, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach 
+                            Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+                          </p>
+                        </div>
+                        
+                        <div>
+                          <h4 className="font-semibold text-gray-900 mb-2">Haftung für Links</h4>
+                          <p className="text-gray-600 text-sm leading-relaxed">
+                            Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. 
+                            Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten 
+                            Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+                          </p>
+                        </div>
+
+                        <div>
+                          <h4 className="font-semibold text-gray-900 mb-2">Urheberrecht</h4>
+                          <p className="text-gray-600 text-sm leading-relaxed">
+                            Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem österreichischen 
+                            Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der 
+                            Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
