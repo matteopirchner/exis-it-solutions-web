@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 
 const AnimatedServiceText = () => {
@@ -29,33 +28,29 @@ const AnimatedServiceText = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [linePhase, setLinePhase] = useState<'filling' | 'overwriting'>('filling');
+  const [linePhase, setLinePhase] = useState<'red-filling' | 'white-overwriting'>('red-filling');
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // Phase 1: Line fills up completely (red)
-      setLinePhase('filling');
+      // Phase 1: Rote Linie überschreibt weiße Linie
+      setLinePhase('red-filling');
       
       setTimeout(() => {
-        // Phase 2: White line overwrites the red line
-        setLinePhase('overwriting');
+        // Phase 2: Text wechseln
+        setIsTransitioning(true);
+        setIsVisible(false);
         
         setTimeout(() => {
-          // Phase 3: Text transition
-          setIsTransitioning(true);
-          setIsVisible(false);
+          setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
+          setIsVisible(true);
           
           setTimeout(() => {
-            setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
-            setIsVisible(true);
-            
-            setTimeout(() => {
-              setIsTransitioning(false);
-              setLinePhase('filling'); // Reset for next cycle
-            }, 500);
+            setIsTransitioning(false);
+            // Phase 3: Weiße Linie überschreibt rote Linie
+            setLinePhase('white-overwriting');
           }, 300);
-        }, 1000); // White line takes 1 second to overwrite
-      }, 4500); // Red line fills for 4.5 seconds
+        }, 300);
+      }, 4000); // Rote Linie füllt 4 Sekunden
     }, 6000);
 
     return () => clearInterval(interval);
@@ -74,23 +69,26 @@ const AnimatedServiceText = () => {
           {services[currentIndex]}
         </p>
         
-        {/* Animated underline with red and white phases */}
-        <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-200">
-          {/* Red line that fills up */}
+        {/* Zentrierte Linie mit fester Länge */}
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-32 h-0.5">
+          {/* Weiße Basis-Linie (immer sichtbar) */}
+          <div className="absolute bottom-0 left-0 w-full h-0.5 bg-white" />
+          
+          {/* Rote Linie die von links nach rechts überschreibt */}
           <div 
             className={`absolute bottom-0 left-0 h-0.5 bg-[#8B1538] transition-all ease-linear ${
-              linePhase === 'filling' && !isTransitioning
-                ? 'w-full duration-[4500ms]' 
+              linePhase === 'red-filling'
+                ? 'w-full duration-[4000ms]' 
                 : 'w-0 duration-300'
             }`}
           />
           
-          {/* White line that overwrites */}
+          {/* Weiße Linie die von links nach rechts die rote überschreibt */}
           <div 
-            className={`absolute bottom-0 left-0 h-0.5 bg-white transition-all duration-1000 ease-linear ${
-              linePhase === 'overwriting' 
-                ? 'w-full' 
-                : 'w-0'
+            className={`absolute bottom-0 left-0 h-0.5 bg-white transition-all ease-linear ${
+              linePhase === 'white-overwriting' 
+                ? 'w-full duration-[1500ms]' 
+                : 'w-0 duration-300'
             }`}
           />
         </div>
