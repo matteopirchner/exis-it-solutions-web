@@ -1,9 +1,9 @@
-
 import { Button } from "@/components/ui/button";
 import { Shield, ArrowLeft, Lock, Eye, AlertTriangle } from "lucide-react";
 import { Link } from "react-router-dom";
 import ContactForm from "@/components/ContactForm";
 import CookieBanner from "@/components/CookieBanner";
+import Footer from "@/components/home/Footer";
 
 const Sicherheitsloesungen = () => {
   return (
@@ -143,6 +143,7 @@ const Sicherheitsloesungen = () => {
         </div>
       </section>
 
+      <Footer />
       <CookieBanner />
     </div>
   );

@@ -1,9 +1,9 @@
-
 import { Button } from "@/components/ui/button";
 import { Server, ArrowLeft, Database, Settings, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import ContactForm from "@/components/ContactForm";
 import CookieBanner from "@/components/CookieBanner";
+import Footer from "@/components/home/Footer";
 
 const ServerManagement = () => {
   return (
@@ -143,6 +143,7 @@ const ServerManagement = () => {
         </div>
       </section>
 
+      <Footer />
       <CookieBanner />
     </div>
   );

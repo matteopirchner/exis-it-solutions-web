@@ -3,6 +3,7 @@ import { Globe, ArrowLeft, Users, Database, Mail, Shield, CheckCircle, Server } 
 import { Link } from "react-router-dom";
 import ContactForm from "@/components/ContactForm";
 import CookieBanner from "@/components/CookieBanner";
+import Footer from "@/components/home/Footer";
 
 const CloudLoesungen = () => {
   return (
@@ -380,6 +381,7 @@ const CloudLoesungen = () => {
         </div>
       </section>
 
+      <Footer />
       <CookieBanner />
     </div>
   );

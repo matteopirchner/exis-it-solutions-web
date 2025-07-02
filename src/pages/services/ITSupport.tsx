@@ -1,9 +1,9 @@
-
 import { Button } from "@/components/ui/button";
 import { Headphones, ArrowLeft, Clock, Phone, Monitor } from "lucide-react";
 import { Link } from "react-router-dom";
 import ContactForm from "@/components/ContactForm";
 import CookieBanner from "@/components/CookieBanner";
+import Footer from "@/components/home/Footer";
 
 const ITSupport = () => {
   return (
@@ -143,6 +143,7 @@ const ITSupport = () => {
         </div>
       </section>
 
+      <Footer />
       <CookieBanner />
     </div>
   );
