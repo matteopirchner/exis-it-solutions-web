@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Globe, ArrowLeft, Users, Database, Mail, Shield, CheckCircle, Server } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -6,6 +7,17 @@ import CookieBanner from "@/components/CookieBanner";
 import Footer from "@/components/home/Footer";
 
 const CloudLoesungen = () => {
+  const smoothScroll = (elementId: string) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      const offsetTop = element.offsetTop - 80;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
@@ -26,11 +38,12 @@ const CloudLoesungen = () => {
                   Zurück
                 </Button>
               </Link>
-              <a href="#contact">
-                <Button className="bg-[#8B1538] hover:bg-[#8B1538]/90 text-white">
-                  Kontakt
-                </Button>
-              </a>
+              <Button 
+                onClick={() => smoothScroll('contact')}
+                className="bg-[#8B1538] hover:bg-[#8B1538]/90 text-white"
+              >
+                Kontakt
+              </Button>
             </div>
           </div>
         </div>
