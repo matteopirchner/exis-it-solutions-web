@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react';
+import { Progress } from '@/components/ui/progress';
 
 const AnimatedServiceText = () => {
   const services = [
@@ -29,18 +30,18 @@ const AnimatedServiceText = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [countdown, setCountdown] = useState(5);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Countdown Timer
-    const countdownInterval = setInterval(() => {
-      setCountdown(prev => {
-        if (prev <= 1) {
-          return 5; // Reset für nächsten Begriff
+    // Progress Timer - füllt sich über 5 Sekunden
+    const progressInterval = setInterval(() => {
+      setProgress(prev => {
+        if (prev >= 100) {
+          return 0; // Reset für nächsten Begriff
         }
-        return prev - 1;
+        return prev + 2; // Alle 100ms um 2% erhöhen (5 Sekunden = 100%)
       });
-    }, 1000);
+    }, 100);
 
     // Text wechseln alle 5 Sekunden
     const textInterval = setInterval(() => {
@@ -50,7 +51,7 @@ const AnimatedServiceText = () => {
       setTimeout(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
         setIsVisible(true);
-        setCountdown(5); // Reset countdown
+        setProgress(0); // Reset progress
         
         setTimeout(() => {
           setIsTransitioning(false);
@@ -59,7 +60,7 @@ const AnimatedServiceText = () => {
     }, 5000);
 
     return () => {
-      clearInterval(countdownInterval);
+      clearInterval(progressInterval);
       clearInterval(textInterval);
     };
   }, [services.length]);
@@ -67,21 +68,22 @@ const AnimatedServiceText = () => {
   return (
     <div className="mb-8 animate-fade-in relative">
       <div className="relative inline-block">
-        <div className="flex items-center gap-4">
-          <p 
-            className={`text-2xl md:text-3xl font-light text-[#8B1538] transition-all duration-500 ease-in-out transform ${
-              isVisible && !isTransitioning 
-                ? 'opacity-100 translate-y-0 scale-100' 
-                : 'opacity-0 translate-y-2 scale-95'
-            }`}
-          >
-            {services[currentIndex]}
-          </p>
-          
-          {/* Countdown Indikator */}
-          <div className="flex items-center justify-center min-w-[24px] h-6 rounded-full bg-[#8B1538] text-white text-sm font-medium">
-            {countdown}
-          </div>
+        <p 
+          className={`text-2xl md:text-3xl font-light text-[#8B1538] mb-3 transition-all duration-500 ease-in-out transform ${
+            isVisible && !isTransitioning 
+              ? 'opacity-100 translate-y-0 scale-100' 
+              : 'opacity-0 translate-y-2 scale-95'
+          }`}
+        >
+          {services[currentIndex]}
+        </p>
+        
+        {/* Minimalistischer Fortschrittsbalken */}
+        <div className="w-full max-w-md">
+          <Progress 
+            value={progress} 
+            className="h-1 bg-gray-200"
+          />
         </div>
       </div>
     </div>
