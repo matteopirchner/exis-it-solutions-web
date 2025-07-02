@@ -33,15 +33,24 @@ const AnimatedServiceText = () => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Progress Timer - füllt sich über 4 Sekunden
-    const progressInterval = setInterval(() => {
-      setProgress(prev => {
-        if (prev >= 100) {
-          return 100; // Bleibt bei 100%
-        }
-        return prev + (100 / 40); // 4 Sekunden bis 100%
-      });
-    }, 100);
+    let progressInterval: NodeJS.Timeout;
+
+    // Funktion zum Starten des Progress-Timers
+    const startProgressTimer = () => {
+      progressInterval = setInterval(() => {
+        setProgress(prev => {
+          if (prev >= 100) {
+            return 100;
+          }
+          return prev + (100 / 40); // 4 Sekunden bis 100%
+        });
+      }, 100);
+    };
+
+    // Progress-Timer nur starten wenn Text sichtbar ist
+    if (isVisible && !isTransitioning) {
+      startProgressTimer();
+    }
 
     // Text wechseln alle 5 Sekunden
     const textInterval = setInterval(() => {
@@ -63,10 +72,12 @@ const AnimatedServiceText = () => {
     }, 5000);
 
     return () => {
-      clearInterval(progressInterval);
+      if (progressInterval) {
+        clearInterval(progressInterval);
+      }
       clearInterval(textInterval);
     };
-  }, [services.length]);
+  }, [services.length, isVisible, isTransitioning]);
 
   return (
     <div className="mb-8 animate-fade-in relative">
