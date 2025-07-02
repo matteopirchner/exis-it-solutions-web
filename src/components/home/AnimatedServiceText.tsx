@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 
 const AnimatedServiceText = () => {
@@ -50,30 +49,25 @@ const AnimatedServiceText = () => {
 
   return (
     <div className="mb-8 animate-fade-in relative">
-      <p 
-        className={`text-2xl md:text-3xl font-light mb-2 text-[#8B1538] transition-all duration-500 ease-in-out transform ${
-          isVisible && !isTransitioning 
-            ? 'opacity-100 translate-y-0 scale-100' 
-            : 'opacity-0 translate-y-2 scale-95'
-        }`}
-      >
-        {services[currentIndex]}
-      </p>
-      
-      {/* Subtle indicator dots - only color change */}
-      <div className="flex justify-center mt-3">
-        <div className="flex space-x-1">
-          {[...Array(3)].map((_, index) => (
-            <div
-              key={index}
-              className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-                isTransitioning 
-                  ? 'bg-[#8B1538]' 
-                  : 'bg-gray-300'
-              }`}
-            />
-          ))}
-        </div>
+      <div className="relative inline-block">
+        <p 
+          className={`text-2xl md:text-3xl font-light mb-2 text-[#8B1538] transition-all duration-500 ease-in-out transform ${
+            isVisible && !isTransitioning 
+              ? 'opacity-100 translate-y-0 scale-100' 
+              : 'opacity-0 translate-y-2 scale-95'
+          }`}
+        >
+          {services[currentIndex]}
+        </p>
+        
+        {/* Animated underline */}
+        <div 
+          className={`absolute bottom-0 left-0 h-0.5 bg-[#8B1538] transition-all duration-1000 ease-in-out ${
+            isTransitioning 
+              ? 'w-0' 
+              : 'w-full'
+          }`}
+        />
       </div>
     </div>
   );
