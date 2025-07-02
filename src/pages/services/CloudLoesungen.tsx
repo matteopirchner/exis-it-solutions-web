@@ -17,10 +17,12 @@ const CloudLoesungen = () => {
               />
             </Link>
             <div className="flex items-center space-x-4">
-              <Link to="/#services" className="flex items-center space-x-2 text-gray-700 hover:text-[#8B1538] transition-colors">
-                <ArrowLeft className="w-4 h-4" />
-                <span>Zurück</span>
-              </Link>
+              <Button variant="ghost" className="text-gray-700 hover:text-[#8B1538] transition-colors" asChild>
+                <Link to="/#services">
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  Zurück
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
