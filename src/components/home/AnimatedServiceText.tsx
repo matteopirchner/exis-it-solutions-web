@@ -60,7 +60,7 @@ const AnimatedServiceText = () => {
         {services[currentIndex]}
       </p>
       
-      {/* Subtle indicator dots - only showing activity */}
+      {/* Subtle indicator dots - only color change */}
       <div className="flex justify-center mt-3">
         <div className="flex space-x-1">
           {[...Array(3)].map((_, index) => (
@@ -68,7 +68,7 @@ const AnimatedServiceText = () => {
               key={index}
               className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
                 isTransitioning 
-                  ? 'bg-[#8B1538] animate-pulse' 
+                  ? 'bg-[#8B1538]' 
                   : 'bg-gray-300'
               }`}
             />
