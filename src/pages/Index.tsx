@@ -5,10 +5,17 @@ import ContactForm from "@/components/ContactForm";
 import GoogleMaps from "@/components/GoogleMaps";
 import CookieBanner from "@/components/CookieBanner";
 import CounterAnimation from "@/components/CounterAnimation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Index = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const smoothScroll = (elementId: string) => {
     setMobileMenuOpen(false); // Close mobile menu when navigating
@@ -138,13 +145,23 @@ const Index = () => {
         </div>
       </nav>
 
-      {/* Hero Section with Animated Background */}
-      <section className="relative pt-32 pb-20 min-h-screen flex items-center">
-        {/* Animated Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+      {/* Hero Section with Enhanced Parallax */}
+      <section className="relative pt-32 pb-20 min-h-screen flex items-center overflow-hidden">
+        {/* Enhanced Parallax Background */}
+        <div 
+          className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black"
+          style={{
+            transform: `translateY(${scrollY * 0.5}px)`
+          }}
+        >
           <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.1%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] animate-pulse"></div>
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#8B1538]/20 to-transparent"></div>
         </div>
+        
+        {/* Floating Elements */}
+        <div className="absolute top-20 left-10 w-20 h-20 bg-[#8B1538]/10 rounded-full animate-float"></div>
+        <div className="absolute top-40 right-20 w-16 h-16 bg-white/5 rounded-full animate-float" style={{animationDelay: '1s'}}></div>
+        <div className="absolute bottom-40 left-1/4 w-12 h-12 bg-[#8B1538]/20 rounded-full animate-float" style={{animationDelay: '2s'}}></div>
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto text-center text-white">
@@ -172,7 +189,7 @@ const Index = () => {
                 size="lg" 
                 variant="outline" 
                 onClick={() => smoothScroll('services')} 
-                className="border-white text-white hover:bg-white hover:text-gray-900 hover:scale-105 transition-all duration-300 shadow-2xl text-lg px-8 py-4"
+                className="border-white text-black bg-white hover:bg-gray-100 hover:text-black hover:scale-105 transition-all duration-300 shadow-2xl text-lg px-8 py-4"
               >
                 Unsere Leistungen
               </Button>
@@ -186,11 +203,18 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-gradient-to-r from-[#8B1538] to-red-600 text-white">
-        <div className="container mx-auto px-4">
+      {/* Enhanced Stats Section with Scroll Reveal */}
+      <section className="py-16 bg-gradient-to-r from-[#8B1538] to-red-600 text-white relative overflow-hidden">
+        <div 
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 50%)',
+            transform: `translateX(${scrollY * 0.1}px)`
+          }}
+        ></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div className="group hover:scale-105 transition-transform duration-300">
+            <div className="group hover:scale-105 transition-transform duration-300 animate-fade-in">
               <CounterAnimation 
                 end={150} 
                 suffix="+" 
@@ -198,11 +222,11 @@ const Index = () => {
               />
               <div className="text-sm md:text-base opacity-90">Zufriedene Kunden</div>
             </div>
-            <div className="group hover:scale-105 transition-transform duration-300">
+            <div className="group hover:scale-105 transition-transform duration-300 animate-fade-in" style={{animationDelay: '0.1s'}}>
               <div className="text-4xl md:text-5xl font-bold mb-2">24/7</div>
               <div className="text-sm md:text-base opacity-90">Support</div>
             </div>
-            <div className="group hover:scale-105 transition-transform duration-300">
+            <div className="group hover:scale-105 transition-transform duration-300 animate-fade-in" style={{animationDelay: '0.2s'}}>
               <CounterAnimation 
                 end={99.9} 
                 suffix="%" 
@@ -210,7 +234,7 @@ const Index = () => {
               />
               <div className="text-sm md:text-base opacity-90">Uptime</div>
             </div>
-            <div className="group hover:scale-105 transition-transform duration-300">
+            <div className="group hover:scale-105 transition-transform duration-300 animate-fade-in" style={{animationDelay: '0.3s'}}>
               <CounterAnimation 
                 end={5} 
                 suffix="+" 
@@ -222,11 +246,21 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Enhanced About Section with Parallax */}
       <section id="about" className="py-20 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white"></div>
+        <div 
+          className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white"
+          style={{
+            transform: `translateY(${scrollY * 0.2}px)`
+          }}
+        ></div>
+        {/* Decorative Elements */}
+        <div className="absolute top-10 right-10 w-32 h-32 bg-gradient-to-br from-[#8B1538]/10 to-transparent rounded-full blur-xl"></div>
+        <div className="absolute bottom-20 left-10 w-24 h-24 bg-gradient-to-br from-blue-500/10 to-transparent rounded-full blur-xl"></div>
+        
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-16 animate-fade-in">
               <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 hover:scale-105 transition-transform duration-300">
                 Über exis Solutions
               </h2>
@@ -301,12 +335,23 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Enhanced Services Section with Advanced Parallax */}
       <section id="services" className="py-20 bg-gradient-to-br from-gray-900 to-black text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%22100%22%20height%3D%22100%22%20viewBox%3D%220%200%20100%20100%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%3E%3Cpath%20d%3D%22M11%2018c3.866%200%207-3.134%207-7s-3.134-7-7-7-7%203.134-7%207%203.134%207%207%207zm48%2025c3.866%200%207-3.134%207-7s-3.134-7-7-7-7%203.134-7%207%203.134%207%207%207zm-43-7c1.657%200%203-1.343%203-3s-1.343-3-3-3-3%201.343-3%203%201.343%203%203%203zm63%2031c1.657%200%203-1.343%203-3s-1.343-3-3-3-3%201.343-3%203%201.343%203%203%203z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+        <div 
+          className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%22100%22%20height%3D%22100%22%20viewBox%3D%220%200%20100%20100%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%3E%3Cpath%20d%3D%22M11%2018c3.866%200%207-3.134%207-7s-3.134-7-7-7-7%203.134-7%207%203.134%207%207%207zm48%2025c3.866%200%207-3.134%207-7s-3.134-7-7-7-7%203.134-7%207%203.134%207%207%207zm-43-7c1.657%200%203-1.343%203-3s-1.343-3-3-3-3%201.343-3%203%201.343%203%203%203zm63%2031c1.657%200%203-1.343%203-3s-1.343-3-3-3-3%201.343-3%203%201.343%203%203%203z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"
+          style={{
+            transform: `translateY(${scrollY * -0.1}px)`
+          }}
+        ></div>
+        
+        {/* Floating geometric shapes */}
+        <div className="absolute top-20 left-20 w-6 h-6 border border-[#8B1538]/30 rotate-45 animate-float"></div>
+        <div className="absolute top-60 right-32 w-8 h-8 border border-white/20 rotate-12 animate-float" style={{animationDelay: '1.5s'}}></div>
+        <div className="absolute bottom-40 left-1/3 w-4 h-4 bg-[#8B1538]/40 rotate-45 animate-float" style={{animationDelay: '3s'}}></div>
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-16 animate-fade-in">
               <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                 Unsere Leistungen
               </h2>
@@ -360,7 +405,7 @@ const Index = () => {
                   link: "/services/it-beratung"
                 }
               ].map((service, index) => (
-                <Link key={index} to={service.link} className="group relative block">
+                <Link key={index} to={service.link} className="group relative block animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-[#8B1538] to-red-600 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-300"></div>
                   <div className="relative bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 hover:transform hover:scale-105 transition-all duration-300 border border-gray-700/50 h-full">
                     <div className="relative h-48 mb-6 overflow-hidden rounded-xl">
@@ -388,10 +433,22 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-100">
-        <div className="container mx-auto px-4">
+      {/* Enhanced Nextcloud Section */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-100 relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-30">
+          <div 
+            className="absolute top-20 left-10 w-40 h-40 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-float"
+          ></div>
+          <div 
+            className="absolute bottom-20 right-10 w-60 h-60 bg-gradient-to-r from-indigo-400/20 to-blue-400/20 rounded-full blur-3xl animate-float"
+            style={{animationDelay: '2s'}}
+          ></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-16 animate-fade-in">
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                 Nextcloud - Ihre Microsoft Teams Alternative
               </h2>
@@ -432,10 +489,27 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="faq" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      {/* Enhanced FAQ Section */}
+      <section id="faq" className="py-20 bg-white relative overflow-hidden">
+        {/* Subtle animated background */}
+        <div className="absolute inset-0">
+          <div 
+            className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-r from-gray-100/50 to-transparent rounded-full blur-3xl"
+            style={{
+              transform: `translate(${scrollY * 0.05}px, ${scrollY * 0.02}px)`
+            }}
+          ></div>
+          <div 
+            className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-l from-[#8B1538]/5 to-transparent rounded-full blur-3xl"
+            style={{
+              transform: `translate(${scrollY * -0.03}px, ${scrollY * 0.04}px)`
+            }}
+          ></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-16 animate-fade-in">
               <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
                 Häufig gestellte Fragen
               </h2>
@@ -481,10 +555,22 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="contact" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
-        <div className="container mx-auto px-4">
+      {/* Enhanced Contact Section */}
+      <section id="contact" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100 relative overflow-hidden">
+        {/* Background animation */}
+        <div className="absolute inset-0">
+          <div 
+            className="absolute top-10 left-10 w-72 h-72 bg-gradient-to-br from-[#8B1538]/10 to-transparent rounded-full blur-3xl animate-pulse"
+          ></div>
+          <div 
+            className="absolute bottom-10 right-10 w-96 h-96 bg-gradient-to-tl from-gray-300/20 to-transparent rounded-full blur-3xl animate-pulse"
+            style={{animationDelay: '1s'}}
+          ></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-16 animate-fade-in">
               <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
                 Kontakt aufnehmen
               </h2>
@@ -534,8 +620,14 @@ const Index = () => {
         </div>
       </section>
 
-      <footer className="bg-gradient-to-r from-gray-900 to-black text-white py-16">
-        <div className="container mx-auto px-4">
+      {/* Enhanced Footer */}
+      <footer className="bg-gradient-to-r from-gray-900 to-black text-white py-16 relative overflow-hidden">
+        {/* Subtle background animation */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%22100%22%20height%3D%22100%22%20viewBox%3D%220%200%20100%20100%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.1%22%3E%3Cpath%20d%3D%22M11%2018c3.866%200%207-3.134%207-7s-3.134-7-7-7-7%203.134-7%207%203.134%207%207%207z%22/%3E%3C/g%3E%3C/svg%3E')] animate-pulse"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div className="col-span-1 md:col-span-2">
