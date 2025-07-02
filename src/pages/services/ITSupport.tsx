@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Headphones, ArrowLeft, Clock, Phone, Monitor } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -19,11 +20,11 @@ const ITSupport = () => {
               />
             </Link>
             <div className="flex items-center space-x-4">
-              <Link to="/" className="flex items-center space-x-2 text-gray-700 hover:text-[#8B1538] transition-colors">
+              <Link to="/#services" className="flex items-center space-x-2 text-gray-700 hover:text-[#8B1538] transition-colors">
                 <ArrowLeft className="w-4 h-4" />
                 <span>Zurück</span>
               </Link>
-              <Button className="bg-[#8B1538] hover:bg-[#8B1538]/90 text-white">
+              <Button className="bg-[#8B1538] hover:bg-[#8B1538]/90 text-white" asChild>
                 <a href="#contact">Kontakt</a>
               </Button>
             </div>

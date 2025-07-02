@@ -24,7 +24,7 @@ const ServerManagement = () => {
                 <ArrowLeft className="w-4 h-4" />
                 <span>Zurück</span>
               </Link>
-              <Button className="bg-[#8B1538] hover:bg-[#8B1538]/90 text-white">
+              <Button className="bg-[#8B1538] hover:bg-[#8B1538]/90 text-white" asChild>
                 <a href="#contact">Kontakt</a>
               </Button>
             </div>
