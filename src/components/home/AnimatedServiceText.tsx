@@ -39,7 +39,7 @@ const AnimatedServiceText = () => {
     const startProgressTimer = () => {
       progressInterval = setInterval(() => {
         setProgress(prev => {
-          const newProgress = prev + (100 / 40); // 4 Sekunden bis 100% (40 * 100ms)
+          const newProgress = prev + (100 / 80); // 4 Sekunden bis 100% (80 * 50ms für smoothere Animation)
           
           // Wenn Progress Bar voll ist, Text wechseln
           if (newProgress >= 100) {
@@ -69,7 +69,7 @@ const AnimatedServiceText = () => {
           
           return newProgress;
         });
-      }, 100);
+      }, 50); // 50ms Intervall für smoothere Animation
     };
 
     // Progress-Timer nur starten wenn Text sichtbar ist
@@ -101,7 +101,7 @@ const AnimatedServiceText = () => {
         <div className="w-80 mx-auto">
           <Progress 
             value={progress} 
-            className={`h-1 [&>div]:bg-[#8B1538] transition-all duration-500 ease-in-out ${
+            className={`h-1 [&>div]:bg-[#8B1538] [&>div]:transition-all [&>div]:duration-75 [&>div]:ease-out transition-all duration-500 ease-in-out ${
               isVisible && !isTransitioning
                 ? 'opacity-100 scale-100 bg-gray-200' 
                 : 'opacity-0 scale-95 bg-transparent'
