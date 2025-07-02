@@ -4,12 +4,16 @@ import { Cookie, Settings, Shield, CheckCircle, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Footer from "@/components/home/Footer";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { useToast } from "@/hooks/use-toast";
 
 const Cookies = () => {
   const [cookieSettings, setCookieSettings] = useState({
     necessary: true,
     analytics: false
   });
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+  const { toast } = useToast();
 
   useEffect(() => {
     const storedConsent = localStorage.getItem('cookieConsent');
@@ -27,7 +31,15 @@ const Cookies = () => {
       ...cookieSettings,
       timestamp: Date.now()
     }));
-    alert('Cookie-Einstellungen gespeichert!');
+    
+    // Show custom dialog instead of browser alert
+    setShowSuccessDialog(true);
+    
+    // Also show a toast for better UX
+    toast({
+      title: "Einstellungen gespeichert",
+      description: "Ihre Cookie-Einstellungen wurden erfolgreich aktualisiert.",
+    });
   };
 
   return (
@@ -197,6 +209,26 @@ const Cookies = () => {
           </div>
         </div>
       </div>
+
+      {/* Success Dialog */}
+      <Dialog open={showSuccessDialog} onOpenChange={setShowSuccessDialog}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <CheckCircle className="w-5 h-5 text-green-500" />
+              Einstellungen gespeichert
+            </DialogTitle>
+            <DialogDescription>
+              Ihre Cookie-Einstellungen wurden erfolgreich aktualisiert und sind ab sofort aktiv.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex justify-end">
+            <Button onClick={() => setShowSuccessDialog(false)} className="bg-[#8B1538] hover:bg-[#8B1538]/90">
+              OK
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </div>
