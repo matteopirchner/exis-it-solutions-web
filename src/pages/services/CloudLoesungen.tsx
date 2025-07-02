@@ -17,12 +17,12 @@ const CloudLoesungen = () => {
               />
             </Link>
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" className="text-gray-700 hover:text-[#8B1538] transition-colors" asChild>
-                <Link to="/#services">
+              <Link to="/#services">
+                <Button variant="ghost" className="text-gray-700 hover:text-[#8B1538] transition-colors">
                   <ArrowLeft className="w-4 h-4 mr-2" />
                   Zurück
-                </Link>
-              </Button>
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -44,9 +44,11 @@ const CloudLoesungen = () => {
               Von Website-Hosting bis zu kompletten Nextcloud-Instanzen - wir bieten sichere, 
               leistungsstarke Hosting-Lösungen für alle Ihre Anforderungen.
             </p>
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl px-8 py-4" asChild>
-              <a href="/#contact">Hosting-Beratung anfragen</a>
-            </Button>
+            <a href="/#contact">
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl px-8 py-4">
+                Hosting-Beratung anfragen
+              </Button>
+            </a>
           </div>
         </div>
       </section>
@@ -301,12 +303,16 @@ const CloudLoesungen = () => {
               perfekte Hosting-Lösung für Ihre Anforderungen.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl px-8 py-4" asChild>
-                <a href="/#contact">Kostenlose Beratung</a>
-              </Button>
-              <Button size="lg" className="bg-blue-600 text-white border border-white hover:bg-blue-700 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl px-8 py-4" asChild>
-                <Link to="/#services">Zurück zu Leistungen</Link>
-              </Button>
+              <a href="/#contact">
+                <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl px-8 py-4">
+                  Kostenlose Beratung
+                </Button>
+              </a>
+              <Link to="/#services">
+                <Button size="lg" className="bg-blue-600 text-white border border-white hover:bg-blue-700 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl px-8 py-4">
+                  Zurück zu Leistungen
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

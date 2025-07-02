@@ -20,15 +20,17 @@ const Netzwerkloesungen = () => {
               />
             </Link>
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" className="text-gray-700 hover:text-[#8B1538] transition-colors" asChild>
-                <Link to="/#services">
+              <Link to="/#services">
+                <Button variant="ghost" className="text-gray-700 hover:text-[#8B1538] transition-colors">
                   <ArrowLeft className="w-4 h-4 mr-2" />
                   Zurück
-                </Link>
-              </Button>
-              <Button className="bg-[#8B1538] hover:bg-[#8B1538]/90 text-white" asChild>
-                <a href="#contact">Kontakt</a>
-              </Button>
+                </Button>
+              </Link>
+              <a href="#contact">
+                <Button className="bg-[#8B1538] hover:bg-[#8B1538]/90 text-white">
+                  Kontakt
+                </Button>
+              </a>
             </div>
           </div>
         </div>
