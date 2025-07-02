@@ -27,8 +27,8 @@ const AnimatedServiceText = () => {
       setTimeout(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
         setIsVisible(true);
-      }, 300);
-    }, 3000);
+      }, 800);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [services.length]);
@@ -36,9 +36,13 @@ const AnimatedServiceText = () => {
   return (
     <div className="mb-8 animate-fade-in">
       <p 
-        className={`text-2xl md:text-3xl font-light mb-2 text-[#8B1538] transition-opacity duration-300 ${
+        className={`text-2xl md:text-3xl font-light mb-2 text-[#8B1538] transition-all duration-700 ease-in-out ${
           isVisible ? 'opacity-100 animate-pulse' : 'opacity-0'
         }`}
+        style={{
+          animationDuration: '3s',
+          animationTimingFunction: 'ease-in-out'
+        }}
       >
         {services[currentIndex]}
       </p>
