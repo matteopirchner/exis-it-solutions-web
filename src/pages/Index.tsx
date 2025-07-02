@@ -36,8 +36,8 @@ const Index = () => {
                 Kontakt Info
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B1538] transition-all duration-300 group-hover:w-full"></span>
               </a>
-              <Button className="bg-[#8B1538] hover:bg-[#8B1538]/90 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-                <a href="#contact">Kontakt</a>
+              <Button className="bg-[#8B1538] hover:bg-[#8B1538]/90 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-black">
+                <a href="#contact" className="text-black">Kontakt</a>
               </Button>
             </div>
           </div>
@@ -67,11 +67,11 @@ const Index = () => {
               Ihre Experten für moderne Technologie in Österreich.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in">
-              <Button size="lg" className="bg-[#8B1538] hover:bg-[#8B1538]/90 hover:scale-105 transition-all duration-300 shadow-2xl text-lg px-8 py-4">
-                <a href="#contact">Kostenloses Beratungsgespräch</a>
+              <Button size="lg" className="bg-[#8B1538] hover:bg-[#8B1538]/90 hover:scale-105 transition-all duration-300 shadow-2xl text-lg px-8 py-4 text-black">
+                <a href="#contact" className="text-black">Kostenloses Beratungsgespräch</a>
               </Button>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 hover:scale-105 transition-all duration-300 shadow-2xl text-lg px-8 py-4">
-                <a href="#services">Unsere Leistungen</a>
+                <a href="#services" className="text-black">Unsere Leistungen</a>
               </Button>
             </div>
           </div>
@@ -151,42 +151,48 @@ const Index = () => {
                   title: "Netzwerklösungen",
                   description: "Planung, Installation und Wartung von Netzwerk-Infrastrukturen für optimale Konnektivität.",
                   image: "/lovable-uploads/2ce30bf2-ca83-4c26-b6c7-c9e91e256ed0.png",
-                  icon: <Network className="w-8 h-8" />
+                  icon: <Network className="w-8 h-8" />,
+                  link: "/services/netzwerkloesungen"
                 },
                 {
                   title: "IT-Support",
                   description: "Schnelle Hilfe bei IT-Problemen - vor Ort oder remote. Ihr zuverlässiger IT-Partner.",
                   image: "/lovable-uploads/7b856886-75e6-4ed2-889b-761ab5eda86c.png",
-                  icon: <Headphones className="w-8 h-8" />
+                  icon: <Headphones className="w-8 h-8" />,
+                  link: "/services/it-support"
                 },
                 {
                   title: "Cloud-Lösungen", 
                   description: "Migration und Verwaltung von Cloud-Infrastrukturen für flexible und skalierbare IT.",
-                  image: "/lovable-uploads/b7a12c88-0d09-4e1d-ae96-63bfe163e728",
-                  icon: <Cloud className="w-8 h-8" />
+                  image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop",
+                  icon: <Cloud className="w-8 h-8" />,
+                  link: "/services/cloud-loesungen"
                 },
                 {
                   title: "Sicherheitslösungen",
                   description: "Umfassende IT-Security-Konzepte zum Schutz Ihrer Daten und Systeme.",
                   image: "/lovable-uploads/f924556c-da8a-4be4-ac24-bcfae1b5e9fa.png",
-                  icon: <Shield className="w-8 h-8" />
+                  icon: <Shield className="w-8 h-8" />,
+                  link: "/services/sicherheitsloesungen"
                 },
                 {
                   title: "Server-Management",
                   description: "Professionelle Verwaltung und Wartung Ihrer Server-Infrastruktur.",
                   image: "/lovable-uploads/b4e37a6e-ccd1-4e28-ae38-f8fb3b22b264.png",
-                  icon: <Server className="w-8 h-8" />
+                  icon: <Server className="w-8 h-8" />,
+                  link: "/services/server-management"
                 },
                 {
                   title: "IT-Beratung",
                   description: "Strategische Beratung für Ihre IT-Landschaft und digitale Transformation.",
                   image: "/lovable-uploads/cfa8e99f-b09f-42a4-8d66-1dd218b41108.png",
-                  icon: <Settings className="w-8 h-8" />
+                  icon: <Settings className="w-8 h-8" />,
+                  link: "/services/it-beratung"
                 }
               ].map((service, index) => (
-                <div key={index} className="group relative">
+                <Link key={index} to={service.link} className="group relative block">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-[#8B1538] to-red-600 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-300"></div>
-                  <div className="relative bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 hover:transform hover:scale-105 transition-all duration-300 border border-gray-700/50">
+                  <div className="relative bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 hover:transform hover:scale-105 transition-all duration-300 border border-gray-700/50 h-full">
                     <div className="relative h-48 mb-6 overflow-hidden rounded-xl">
                       <img 
                         src={service.image} 
@@ -205,7 +211,7 @@ const Index = () => {
                       {service.description}
                     </p>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -332,10 +338,10 @@ const Index = () => {
               <div>
                 <h4 className="font-semibold mb-6 text-lg">Services</h4>
                 <ul className="space-y-3 text-gray-400">
-                  <li><a href="#services" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Netzwerklösungen</a></li>
-                  <li><a href="#services" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">IT-Support</a></li>
-                  <li><a href="#services" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Cloud-Lösungen</a></li>
-                  <li><a href="#services" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Server-Management</a></li>
+                  <li><Link to="/services/netzwerkloesungen" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Netzwerklösungen</Link></li>
+                  <li><Link to="/services/it-support" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">IT-Support</Link></li>
+                  <li><Link to="/services/cloud-loesungen" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Cloud-Lösungen</Link></li>
+                  <li><Link to="/services/server-management" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Server-Management</Link></li>
                 </ul>
               </div>
               
