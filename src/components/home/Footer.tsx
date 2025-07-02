@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Mail, MapPin, Phone, Instagram } from "lucide-react";
 
@@ -9,11 +8,13 @@ const Footer = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
-              <img 
-                src="/lovable-uploads/a4979dec-233f-4407-a953-c36de27959ab.png" 
-                alt="exis Solutions" 
-                className="h-12 mb-6 filter brightness-0 invert hover:scale-105 transition-transform duration-300"
-              />
+              <Link to="/" className="inline-block">
+                <img 
+                  src="/lovable-uploads/a4979dec-233f-4407-a953-c36de27959ab.png" 
+                  alt="exis Solutions" 
+                  className="h-12 mb-6 filter brightness-0 invert hover:scale-105 transition-transform duration-300"
+                />
+              </Link>
               <p className="text-gray-400 mb-6 leading-relaxed">
                 Ihr verlässlicher Partner für professionelle IT-Lösungen in Pongau/Salzburg. 
                 Von Netzwerken bis Hosting - wir machen Ihre IT zum Erfolgsfaktor.
