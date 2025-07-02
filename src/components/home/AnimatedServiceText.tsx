@@ -34,35 +34,39 @@ const AnimatedServiceText = () => {
   const [isProgressFading, setIsProgressFading] = useState(false);
 
   useEffect(() => {
-    // Progress Timer - füllt sich über 4.5 Sekunden, dann fade out
+    // Progress Timer - füllt sich über 4 Sekunden, dann 1 Sekunde fade out
     const progressInterval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
           return 100; // Bleibt bei 100%
         }
-        return prev + (100 / 45); // 4.5 Sekunden bis 100%
+        return prev + (100 / 40); // 4 Sekunden bis 100%
       });
     }, 100);
 
     // Text wechseln alle 5 Sekunden
     const textInterval = setInterval(() => {
-      // Progress fade out starten
-      setIsProgressFading(true);
-      
-      // Text transition
-      setIsTransitioning(true);
-      setIsVisible(false);
-      
+      // Progress fade out starten (1 Sekunde vor Text-Wechsel)
       setTimeout(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
-        setIsVisible(true);
-        setProgress(0); // Reset progress
-        setIsProgressFading(false); // Reset fade state
+        setIsProgressFading(true);
+      }, 4000);
+      
+      // Text transition nach 4.5 Sekunden
+      setTimeout(() => {
+        setIsTransitioning(true);
+        setIsVisible(false);
         
         setTimeout(() => {
-          setIsTransitioning(false);
-        }, 300);
-      }, 300);
+          setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
+          setIsVisible(true);
+          setProgress(0); // Reset progress
+          setIsProgressFading(false); // Reset fade state
+          
+          setTimeout(() => {
+            setIsTransitioning(false);
+          }, 400);
+        }, 400);
+      }, 4500);
     }, 5000);
 
     return () => {
@@ -75,7 +79,7 @@ const AnimatedServiceText = () => {
     <div className="mb-8 animate-fade-in relative">
       <div className="relative text-center">
         <p 
-          className={`text-2xl md:text-3xl font-light text-[#8B1538] mb-3 transition-all duration-500 ease-in-out transform ${
+          className={`text-2xl md:text-3xl font-light text-[#8B1538] mb-3 transition-all duration-700 ease-in-out transform ${
             isVisible && !isTransitioning 
               ? 'opacity-100 translate-y-0 scale-100' 
               : 'opacity-0 translate-y-2 scale-95'
@@ -84,12 +88,12 @@ const AnimatedServiceText = () => {
           {services[currentIndex]}
         </p>
         
-        {/* Zentrierter roter Fortschrittsbalken mit fester Breite und Fade-Out */}
+        {/* Zentrierter roter Fortschrittsbalken mit fester Breite und smooth Fade-Out */}
         <div className="w-80 mx-auto">
           <Progress 
             value={progress} 
-            className={`h-1 bg-gray-200 [&>div]:bg-[#8B1538] transition-opacity duration-500 ${
-              isProgressFading ? 'opacity-0' : 'opacity-100'
+            className={`h-1 bg-gray-200 [&>div]:bg-[#8B1538] transition-all duration-1000 ease-out ${
+              isProgressFading ? 'opacity-0 scale-x-95' : 'opacity-100 scale-x-100'
             }`}
           />
         </div>
