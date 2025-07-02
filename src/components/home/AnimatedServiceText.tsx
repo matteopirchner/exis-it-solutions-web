@@ -31,10 +31,9 @@ const AnimatedServiceText = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [isProgressFading, setIsProgressFading] = useState(false);
 
   useEffect(() => {
-    // Progress Timer - füllt sich über 4 Sekunden, dann 1 Sekunde fade out
+    // Progress Timer - füllt sich über 4 Sekunden
     const progressInterval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
@@ -46,21 +45,15 @@ const AnimatedServiceText = () => {
 
     // Text wechseln alle 5 Sekunden
     const textInterval = setInterval(() => {
-      // Progress fade out starten (1 Sekunde vor Text-Wechsel)
-      setTimeout(() => {
-        setIsProgressFading(true);
-      }, 4000);
-      
-      // Text transition nach 4.5 Sekunden
+      // Text und Progress gleichzeitig ausblenden nach 4.5 Sekunden
       setTimeout(() => {
         setIsTransitioning(true);
         setIsVisible(false);
         
         setTimeout(() => {
           setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
+          setProgress(0); // Reset progress während es unsichtbar ist
           setIsVisible(true);
-          setProgress(0); // Reset progress
-          setIsProgressFading(false); // Reset fade state
           
           setTimeout(() => {
             setIsTransitioning(false);
@@ -88,12 +81,14 @@ const AnimatedServiceText = () => {
           {services[currentIndex]}
         </p>
         
-        {/* Zentrierter roter Fortschrittsbalken mit fester Breite und smooth Fade-Out */}
+        {/* Zentrierter roter Fortschrittsbalken - fadedgleichzeitig mit dem Text */}
         <div className="w-80 mx-auto">
           <Progress 
             value={progress} 
-            className={`h-1 bg-gray-200 [&>div]:bg-[#8B1538] transition-all duration-1000 ease-out ${
-              isProgressFading ? 'opacity-0 scale-x-95' : 'opacity-100 scale-x-100'
+            className={`h-1 bg-gray-200 [&>div]:bg-[#8B1538] transition-all duration-700 ease-in-out ${
+              isVisible && !isTransitioning 
+                ? 'opacity-100 scale-100' 
+                : 'opacity-0 scale-95'
             }`}
           />
         </div>
