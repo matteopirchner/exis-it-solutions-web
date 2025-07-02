@@ -1,14 +1,28 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Mail, MapPin, Phone, Instagram } from "lucide-react";
 
-const Footer = () => {
+interface FooterProps {
+  smoothScroll?: (elementId: string) => void;
+}
+
+const Footer = ({ smoothScroll }: FooterProps) => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (isHomePage && smoothScroll) {
+      e.preventDefault();
+      smoothScroll('top');
+    }
+  };
+
   return (
     <footer className="bg-gradient-to-r from-gray-900 to-black text-white py-16">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
-              <Link to="/" className="inline-block">
+              <Link to="/" className="inline-block" onClick={handleLogoClick}>
                 <img 
                   src="/lovable-uploads/a4979dec-233f-4407-a953-c36de27959ab.png" 
                   alt="exis Solutions" 

@@ -40,7 +40,7 @@ const Index = () => {
       <NextcloudSection smoothScroll={smoothScroll} />
       <FAQSection />
       <ContactSection />
-      <Footer />
+      <Footer smoothScroll={smoothScroll} />
       <CookieBanner />
     </div>
   );
