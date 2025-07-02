@@ -45,7 +45,7 @@ const AnimatedServiceText = () => {
           if (newProgress >= 100) {
             // Progress Bar kurz bei 100% lassen
             setTimeout(() => {
-              // Text ausblenden
+              // Text ausblenden (Progress Bar bleibt bei 100%)
               setIsTransitioning(true);
               setIsVisible(false);
               
@@ -53,6 +53,8 @@ const AnimatedServiceText = () => {
                 setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
                 
                 setTimeout(() => {
+                  // Progress Bar erst jetzt zurücksetzen
+                  setProgress(0);
                   setIsVisible(true);
                   
                   setTimeout(() => {
@@ -75,11 +77,6 @@ const AnimatedServiceText = () => {
       startProgressTimer();
     }
 
-    // Progress auf 0 setzen wenn Transition startet
-    if (isTransitioning) {
-      setProgress(0);
-    }
-
     return () => {
       if (progressInterval) {
         clearInterval(progressInterval);
@@ -100,12 +97,12 @@ const AnimatedServiceText = () => {
           {services[currentIndex]}
         </p>
         
-        {/* Zentrierter roter Fortschrittsbalken - komplett ausgeblendet während Transition */}
+        {/* Zentrierter roter Fortschrittsbalken - bleibt sichtbar während Fade-out */}
         <div className="w-80 mx-auto">
           <Progress 
             value={progress} 
             className={`h-1 [&>div]:bg-[#8B1538] transition-all duration-700 ease-in-out ${
-              isVisible && !isTransitioning 
+              isVisible || isTransitioning
                 ? 'opacity-100 scale-100 bg-gray-200' 
                 : 'opacity-0 scale-95 bg-transparent'
             }`}
