@@ -1,14 +1,18 @@
-
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Shield, Server, Network, Headphones, Cloud, Settings, Users, Award, Clock, CheckCircle, Star, Globe, Mail, Database } from "lucide-react";
+import { ArrowDown, Shield, Server, Network, Headphones, Cloud, Settings, Users, Award, Clock, CheckCircle, Star, Globe, Mail, Database, Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import ContactForm from "@/components/ContactForm";
 import GoogleMaps from "@/components/GoogleMaps";
 import CookieBanner from "@/components/CookieBanner";
 import CounterAnimation from "@/components/CounterAnimation";
+import { useState } from "react";
 
 const Index = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const smoothScroll = (elementId: string) => {
+    setMobileMenuOpen(false); // Close mobile menu when navigating
+    
     if (elementId === 'top') {
       window.scrollTo({
         top: 0,
@@ -19,7 +23,7 @@ const Index = () => {
     
     const element = document.getElementById(elementId);
     if (element) {
-      const offsetTop = element.offsetTop - 80; // Reduced offset from 120px to 80px
+      const offsetTop = element.offsetTop - 80;
       window.scrollTo({
         top: offsetTop,
         behavior: 'smooth'
@@ -40,6 +44,8 @@ const Index = () => {
                 className="h-12"
               />
             </button>
+            
+            {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
               <button 
                 onClick={() => smoothScroll('top')} 
@@ -69,8 +75,63 @@ const Index = () => {
                 Fragen
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B1538] transition-all duration-300 group-hover:w-full"></span>
               </button>
-              <Button className="bg-[#8B1538] hover:bg-[#8B1538]/90 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-white">
-                <button onClick={() => smoothScroll('contact')} className="text-white">Kontakt</button>
+              <Button 
+                onClick={() => smoothScroll('contact')} 
+                className="bg-[#8B1538] hover:bg-[#8B1538]/90 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-white"
+              >
+                Kontakt
+              </Button>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+            >
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6 text-gray-700" />
+              ) : (
+                <Menu className="w-6 h-6 text-gray-700" />
+              )}
+            </button>
+          </div>
+
+          {/* Mobile Navigation Menu */}
+          <div className={`md:hidden transition-all duration-300 ease-in-out ${
+            mobileMenuOpen 
+              ? 'max-h-96 opacity-100 mt-4' 
+              : 'max-h-0 opacity-0 overflow-hidden'
+          }`}>
+            <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-gray-200/20 p-6 space-y-4">
+              <button 
+                onClick={() => smoothScroll('top')} 
+                className="block w-full text-left text-gray-700 hover:text-[#8B1538] transition-colors duration-300 py-2 px-4 rounded-lg hover:bg-gray-50"
+              >
+                Start
+              </button>
+              <button 
+                onClick={() => smoothScroll('about')} 
+                className="block w-full text-left text-gray-700 hover:text-[#8B1538] transition-colors duration-300 py-2 px-4 rounded-lg hover:bg-gray-50"
+              >
+                Über Exis
+              </button>
+              <button 
+                onClick={() => smoothScroll('services')} 
+                className="block w-full text-left text-gray-700 hover:text-[#8B1538] transition-colors duration-300 py-2 px-4 rounded-lg hover:bg-gray-50"
+              >
+                Leistungen
+              </button>
+              <button 
+                onClick={() => smoothScroll('faq')} 
+                className="block w-full text-left text-gray-700 hover:text-[#8B1538] transition-colors duration-300 py-2 px-4 rounded-lg hover:bg-gray-50"
+              >
+                Fragen
+              </button>
+              <Button 
+                onClick={() => smoothScroll('contact')} 
+                className="w-full bg-[#8B1538] hover:bg-[#8B1538]/90 text-white justify-center"
+              >
+                Kontakt
               </Button>
             </div>
           </div>
@@ -100,11 +161,20 @@ const Index = () => {
               Ihre Experten für moderne Technologie in Pongau/Salzburg.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in">
-              <Button size="lg" className="bg-[#8B1538] hover:bg-[#8B1538]/90 hover:scale-105 transition-all duration-300 shadow-2xl text-lg px-8 py-4 text-white">
-                <button onClick={() => smoothScroll('contact')} className="text-white">Kostenloses Beratungsgespräch</button>
+              <Button 
+                size="lg" 
+                onClick={() => smoothScroll('contact')} 
+                className="bg-[#8B1538] hover:bg-[#8B1538]/90 hover:scale-105 transition-all duration-300 shadow-2xl text-lg px-8 py-4 text-white"
+              >
+                Kostenloses Beratungsgespräch
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 hover:scale-105 transition-all duration-300 shadow-2xl text-lg px-8 py-4">
-                <button onClick={() => smoothScroll('services')} className="text-black">Unsere Leistungen</button>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                onClick={() => smoothScroll('services')} 
+                className="border-white text-white hover:bg-white hover:text-gray-900 hover:scale-105 transition-all duration-300 shadow-2xl text-lg px-8 py-4"
+              >
+                Unsere Leistungen
               </Button>
             </div>
           </div>
@@ -350,8 +420,12 @@ const Index = () => {
             </div>
 
             <div className="text-center">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4">
-                <button onClick={() => smoothScroll('contact')}>Nextcloud-Beratung anfragen</button>
+              <Button 
+                size="lg" 
+                onClick={() => smoothScroll('contact')} 
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4"
+              >
+                Nextcloud-Beratung anfragen
               </Button>
             </div>
           </div>
