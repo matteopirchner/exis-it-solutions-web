@@ -30,6 +30,7 @@ const AnimatedServiceText = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [linePhase, setLinePhase] = useState<'red-loading' | 'white-loading'>('red-loading');
+  const [key, setKey] = useState(0); // Key für Animation-Reset
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -47,6 +48,8 @@ const AnimatedServiceText = () => {
           setLinePhase(prevPhase => 
             prevPhase === 'red-loading' ? 'white-loading' : 'red-loading'
           );
+          // Key erhöhen um Animation neu zu starten
+          setKey(prev => prev + 1);
         }, 300);
       }, 300);
     }, 5000); // Alle 5 Sekunden wechseln
@@ -67,8 +70,8 @@ const AnimatedServiceText = () => {
           {services[currentIndex]}
         </p>
         
-        {/* Zentrierte Linie mit fester Länge als Ladebalken */}
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-32 h-0.5">
+        {/* Zentrierte Linie mit fester Länge als Ladebalken - jetzt länger */}
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-48 h-0.5">
           {/* Basis-Linie */}
           <div className={`absolute bottom-0 left-0 w-full h-0.5 ${
             linePhase === 'red-loading' ? 'bg-white' : 'bg-[#8B1538]'
@@ -76,13 +79,17 @@ const AnimatedServiceText = () => {
           
           {/* Ladebalken der sich über 5 Sekunden füllt */}
           <div 
-            className={`absolute bottom-0 left-0 h-0.5 transition-all ease-linear ${
+            key={key} // Key zum Reset der Animation
+            className={`absolute bottom-0 left-0 h-0.5 ${
               linePhase === 'red-loading' ? 'bg-[#8B1538]' : 'bg-white'
             } ${
               !isTransitioning 
-                ? 'w-full duration-[5000ms]' 
+                ? 'w-full duration-[5000ms] ease-linear' 
                 : 'w-0 duration-300'
-            }`}
+            } transition-all`}
+            style={{
+              width: !isTransitioning ? '100%' : '0%'
+            }}
           />
         </div>
       </div>
