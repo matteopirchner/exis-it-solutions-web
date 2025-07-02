@@ -42,7 +42,7 @@ const AnimatedServiceText = () => {
           if (prev >= 100) {
             return 100;
           }
-          return prev + (100 / 40); // 4 Sekunden bis 100% (anstatt 6 Sekunden)
+          return prev + (100 / 60); // 6 Sekunden bis 100% (zurück auf 6 Sekunden)
         });
       }, 100);
     };
@@ -52,9 +52,9 @@ const AnimatedServiceText = () => {
       startProgressTimer();
     }
 
-    // Text wechseln alle 4.5 Sekunden
+    // Text wechseln alle 6.5 Sekunden
     const textInterval = setInterval(() => {
-      // Text und Progress gleichzeitig ausblenden nach 4 Sekunden
+      // Text und Progress gleichzeitig ausblenden nach 6 Sekunden
       setTimeout(() => {
         setIsTransitioning(true);
         setIsVisible(false);
@@ -68,8 +68,8 @@ const AnimatedServiceText = () => {
             setIsTransitioning(false);
           }, 400);
         }, 400);
-      }, 4000);
-    }, 4500);
+      }, 6000);
+    }, 6500);
 
     return () => {
       if (progressInterval) {
