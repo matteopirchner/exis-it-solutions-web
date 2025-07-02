@@ -39,7 +39,7 @@ const AnimatedServiceText = () => {
     const startProgressTimer = () => {
       progressInterval = setInterval(() => {
         setProgress(prev => {
-          const newProgress = prev + (100 / 64); // 6.4 Sekunden bis 100%
+          const newProgress = prev + (100 / 40); // 4 Sekunden bis 100% (40 * 100ms)
           
           // Wenn Progress Bar voll ist, Text wechseln
           if (newProgress >= 100) {
@@ -59,10 +59,10 @@ const AnimatedServiceText = () => {
                   
                   setTimeout(() => {
                     setIsTransitioning(false);
-                  }, 400);
-                }, 400);
-              }, 400);
-            }, 500); // 500ms bei 100% bleiben
+                  }, 250);
+                }, 250);
+              }, 250);
+            }, 300); // 300ms bei 100% bleiben
             
             return 100; // Bei 100% bleiben
           }
@@ -88,7 +88,7 @@ const AnimatedServiceText = () => {
     <div className="mb-8 animate-fade-in relative">
       <div className="relative text-center">
         <p 
-          className={`text-2xl md:text-3xl font-light text-[#8B1538] mb-3 transition-all duration-700 ease-in-out transform ${
+          className={`text-2xl md:text-3xl font-light text-[#8B1538] mb-3 transition-all duration-500 ease-in-out transform ${
             isVisible && !isTransitioning 
               ? 'opacity-100 translate-y-0 scale-100' 
               : 'opacity-0 translate-y-2 scale-95'
@@ -101,7 +101,7 @@ const AnimatedServiceText = () => {
         <div className="w-80 mx-auto">
           <Progress 
             value={progress} 
-            className={`h-1 [&>div]:bg-[#8B1538] transition-all duration-700 ease-in-out ${
+            className={`h-1 [&>div]:bg-[#8B1538] transition-all duration-500 ease-in-out ${
               isVisible && !isTransitioning
                 ? 'opacity-100 scale-100 bg-gray-200' 
                 : 'opacity-0 scale-95 bg-transparent'
