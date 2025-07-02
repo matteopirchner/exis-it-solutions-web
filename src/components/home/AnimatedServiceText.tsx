@@ -27,59 +27,38 @@ const AnimatedServiceText = () => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsAnimating(true);
+      setIsTransitioning(true);
+      setIsVisible(false);
+      
       setTimeout(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
-        setIsAnimating(false);
-      }, 800);
-    }, 4000);
+        setIsVisible(true);
+        
+        setTimeout(() => {
+          setIsTransitioning(false);
+        }, 500);
+      }, 500);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, [services.length]);
 
-  const getVisibleServices = () => {
-    const prevIndex = (currentIndex - 1 + services.length) % services.length;
-    const nextIndex = (currentIndex + 1) % services.length;
-    const afterNextIndex = (currentIndex + 2) % services.length;
-    
-    return [
-      { text: services[prevIndex], position: 'prev' },
-      { text: services[currentIndex], position: 'current' },
-      { text: services[nextIndex], position: 'next' },
-      { text: services[afterNextIndex], position: 'after' }
-    ];
-  };
-
   return (
-    <div className="mb-8 animate-fade-in relative h-20 overflow-hidden">
-      <div className={`transition-transform duration-800 ease-in-out ${isAnimating ? '-translate-y-12' : 'translate-y-0'}`}>
-        {getVisibleServices().map((service, index) => (
-          <p 
-            key={`${service.text}-${index}`}
-            className={`text-2xl md:text-3xl font-light text-[#8B1538] text-center w-full h-12 flex items-center justify-center transition-opacity duration-800 ${
-              service.position === 'current' 
-                ? 'opacity-100' 
-                : service.position === 'next'
-                ? 'opacity-60'
-                : 'opacity-30'
-            }`}
-            style={{
-              transform: `translateY(${
-                service.position === 'prev' ? '-48px' :
-                service.position === 'current' ? '0px' :
-                service.position === 'next' ? '48px' :
-                '96px'
-              })`
-            }}
-          >
-            {service.text}
-          </p>
-        ))}
-      </div>
+    <div className="mb-8 animate-fade-in">
+      <p 
+        className={`text-2xl md:text-3xl font-light mb-2 text-[#8B1538] transition-all duration-500 ease-in-out transform ${
+          isVisible && !isTransitioning 
+            ? 'opacity-100 translate-y-0 scale-100' 
+            : 'opacity-0 translate-y-2 scale-95'
+        }`}
+      >
+        {services[currentIndex]}
+      </p>
     </div>
   );
 };
