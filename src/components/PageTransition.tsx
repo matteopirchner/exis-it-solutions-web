@@ -11,12 +11,12 @@ const PageTransition = ({ children }: PageTransitionProps) => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
+      exit={{ opacity: 0, y: 20 }}
       transition={{
-        duration: 0.3,
+        duration: 0.8,
         ease: "easeInOut"
       }}
-      className="w-full"
+      className="w-full min-h-screen"
     >
       {children}
     </motion.div>

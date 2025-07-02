@@ -1,6 +1,7 @@
 
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import { useEffect } from "react";
 import PageTransition from "./PageTransition";
 import { useAnalytics } from "@/hooks/useAnalytics";
 import Index from "@/pages/Index";
@@ -19,6 +20,11 @@ import IndividuelleLösungen from "@/pages/services/IndividuelleLösungen";
 const AnimatedRoutes = () => {
   const location = useLocation();
   useAnalytics();
+  
+  // Scroll to top when route changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
   
   return (
     <AnimatePresence mode="wait">
