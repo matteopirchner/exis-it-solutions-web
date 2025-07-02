@@ -27,52 +27,89 @@ const AnimatedServiceText = () => {
     "Strategic IT-Consulting"
   ];
 
+  // Kürzere Texte für mobile Geräte
+  const mobileServices = [
+    "Netzwerklösungen",
+    "WLAN mit Voucher-System", 
+    "VLAN-Segmentierung",
+    "WLAN-Infrastruktur",
+    "Nextcloud Services",
+    "Webhosting-Lösungen",
+    "Backup-Systeme",
+    "Email-Server",
+    "24/7 IT-Support",
+    "Cloud-Services",
+    "Server-Solutions",
+    "IT-Security",
+    "VPN-Infrastrukturen",
+    "Microsoft 365",
+    "Domain-Management",
+    "SSL-Zertifikate",
+    "System-Monitoring",
+    "Hardware Procurement",
+    "Software-Deployment",
+    "Performance Optimization",
+    "IT-Consulting"
+  ];
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Mobile Detection
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     let progressInterval: NodeJS.Timeout;
+    
+    // Längere Anzeigezeit für mobile Geräte
+    const animationDuration = isMobile ? 5000 : 4000; // 5s für mobile, 4s für desktop
+    const progressSteps = animationDuration / 16; // 60Hz
 
-    // Funktion zum Starten des Progress-Timers
     const startProgressTimer = () => {
       progressInterval = setInterval(() => {
         setProgress(prev => {
-          const newProgress = prev + (100 / 250); // 4 Sekunden bis 100% (250 * 16ms für 60Hz)
+          const newProgress = prev + (100 / progressSteps);
           
-          // Wenn Progress Bar voll ist, Text wechseln
           if (newProgress >= 100) {
-            // Progress Bar kurz bei 100% lassen
+            // Längere Pause bei 100% für mobile Geräte
             setTimeout(() => {
-              // Text und Progress Bar zusammen ausblenden
               setIsTransitioning(true);
               setIsVisible(false);
               
               setTimeout(() => {
-                setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
+                const serviceArray = isMobile ? mobileServices : services;
+                setCurrentIndex((prevIndex) => (prevIndex + 1) % serviceArray.length);
                 
                 setTimeout(() => {
-                  // Progress Bar zurücksetzen
                   setProgress(0);
                   setIsVisible(true);
                   
                   setTimeout(() => {
                     setIsTransitioning(false);
-                  }, 250);
-                }, 250);
-              }, 250);
-            }, 300); // 300ms bei 100% bleiben
+                  }, 300); // Längere Übergangszeit
+                }, 300);
+              }, 300);
+            }, 500); // Längere Pause bei 100%
             
-            return 100; // Bei 100% bleiben
+            return 100;
           }
           
           return newProgress;
         });
-      }, 16); // 16ms Intervall für 60Hz
+      }, 16);
     };
 
-    // Progress-Timer nur starten wenn Text sichtbar ist
     if (isVisible && !isTransitioning) {
       startProgressTimer();
     }
@@ -82,26 +119,34 @@ const AnimatedServiceText = () => {
         clearInterval(progressInterval);
       }
     };
-  }, [services.length, isVisible, isTransitioning]);
+  }, [services.length, mobileServices.length, isVisible, isTransitioning, isMobile]);
+
+  const currentServices = isMobile ? mobileServices : services;
 
   return (
     <div className="mb-8 animate-fade-in relative">
       <div className="relative text-center">
         <p 
-          className={`text-2xl md:text-3xl font-light text-[#8B1538] mb-3 transition-all duration-500 ease-in-out transform ${
+          className={`text-xl md:text-2xl lg:text-3xl font-light text-[#8B1538] mb-3 transition-all duration-700 ease-in-out transform px-4 ${
             isVisible && !isTransitioning 
               ? 'opacity-100 translate-y-0 scale-100' 
-              : 'opacity-0 translate-y-2 scale-95'
+              : 'opacity-0 translate-y-3 scale-95'
           }`}
+          style={{
+            minHeight: isMobile ? '2rem' : '2.5rem', // Feste Höhe um Layout-Shifts zu vermeiden
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
         >
-          {services[currentIndex]}
+          {currentServices[currentIndex]}
         </p>
         
-        {/* Zentrierter roter Fortschrittsbalken - faded in und out mit Text */}
-        <div className="w-80 mx-auto">
+        {/* Responsiver Fortschrittsbalken */}
+        <div className={`${isMobile ? 'w-64' : 'w-80'} mx-auto`}>
           <Progress 
             value={progress} 
-            className={`h-1 [&>div]:bg-[#8B1538] [&>div]:transition-all [&>div]:duration-75 [&>div]:ease-out transition-all duration-500 ease-in-out ${
+            className={`h-1 [&>div]:bg-[#8B1538] [&>div]:transition-all [&>div]:duration-100 [&>div]:ease-out transition-all duration-700 ease-in-out ${
               isVisible && !isTransitioning
                 ? 'opacity-100 scale-100 bg-gray-200' 
                 : 'opacity-0 scale-95 bg-transparent'
