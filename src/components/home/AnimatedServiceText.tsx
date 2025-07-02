@@ -67,7 +67,7 @@ const AnimatedServiceText = () => {
 
   return (
     <div className="mb-8 animate-fade-in relative">
-      <div className="relative inline-block">
+      <div className="relative text-center">
         <p 
           className={`text-2xl md:text-3xl font-light text-[#8B1538] mb-3 transition-all duration-500 ease-in-out transform ${
             isVisible && !isTransitioning 
@@ -78,8 +78,8 @@ const AnimatedServiceText = () => {
           {services[currentIndex]}
         </p>
         
-        {/* Roter Fortschrittsbalken mit fester Breite */}
-        <div className="w-80">
+        {/* Zentrierter roter Fortschrittsbalken mit fester Breite */}
+        <div className="w-80 mx-auto">
           <Progress 
             value={progress} 
             className="h-1 bg-gray-200 [&>div]:bg-[#8B1538]"
