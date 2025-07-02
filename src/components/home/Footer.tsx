@@ -58,7 +58,9 @@ const Footer = () => {
                 <li><Link to="/services/netzwerkloesungen" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Netzwerklösungen</Link></li>
                 <li><Link to="/services/it-support" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">IT-Support</Link></li>
                 <li><Link to="/services/cloud-loesungen" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Hosting</Link></li>
+                <li><Link to="/services/sicherheitsloesungen" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Sicherheitslösungen</Link></li>
                 <li><Link to="/services/server-management" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Server-Management</Link></li>
+                <li><Link to="/services/it-beratung" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">IT-Beratung</Link></li>
               </ul>
             </div>
             
