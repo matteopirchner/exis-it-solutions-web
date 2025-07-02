@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Globe, ArrowLeft, Users, Database, Mail, Shield, CheckCircle, Server } from "lucide-react";
 import { Link } from "react-router-dom";
+import ContactForm from "@/components/ContactForm";
+import CookieBanner from "@/components/CookieBanner";
 
 const CloudLoesungen = () => {
   return (
@@ -23,32 +25,100 @@ const CloudLoesungen = () => {
                   Zurück
                 </Button>
               </Link>
+              <a href="#contact">
+                <Button className="bg-[#8B1538] hover:bg-[#8B1538]/90 text-white">
+                  Kontakt
+                </Button>
+              </a>
             </div>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white">
+      <section className="pt-24 pb-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex justify-center mb-8">
-              <div className="bg-white/10 backdrop-blur-sm rounded-full p-6">
-                <Globe className="w-16 h-16 text-blue-300" />
+              <div className="bg-[#8B1538] rounded-full p-4">
+                <Globe className="w-12 h-12" />
               </div>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Professionelle Hosting-Lösungen
+              Cloud-Lösungen & Hosting
             </h1>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-8">
-              Von Website-Hosting bis zu kompletten Nextcloud-Instanzen - wir bieten sichere, 
-              leistungsstarke Hosting-Lösungen für alle Ihre Anforderungen.
+            <p className="text-xl text-gray-300 mb-8">
+              Professionelle Hosting-Lösungen und Cloud-Services für Ihr Unternehmen
             </p>
-            <a href="/#contact">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl px-8 py-4">
-                Hosting-Beratung anfragen
-              </Button>
-            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Content Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
+              <div>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                  Sichere Cloud-Lösungen
+                </h2>
+                <p className="text-lg text-gray-600 mb-6">
+                  Von Website-Hosting bis zu kompletten Nextcloud-Instanzen - wir bieten sichere, 
+                  leistungsstarke Hosting-Lösungen für alle Ihre Anforderungen. Ihre Daten bleiben 
+                  dabei sicher in Österreich und werden DSGVO-konform verwaltet.
+                </p>
+                <ul className="space-y-3">
+                  {[
+                    "Website-Hosting mit SSL & Backups",
+                    "Nextcloud als Teams-Alternative", 
+                    "E-Mail-Server & Domain-Verwaltung",
+                    "Dedicated Server & VPS",
+                    "24/7 Monitoring & Support",
+                    "DSGVO-konforme Datenhaltung"
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-center">
+                      <div className="w-2 h-2 bg-[#8B1538] rounded-full mr-3"></div>
+                      <span className="text-gray-700">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop" 
+                  alt="Cloud-Lösungen" 
+                  className="rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+            </div>
+
+            {/* Features Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                {
+                  icon: <Shield className="w-8 h-8" />,
+                  title: "Sicherheit",
+                  description: "DSGVO-konforme Datenhaltung in Österreich"
+                },
+                {
+                  icon: <CheckCircle className="w-8 h-8" />,
+                  title: "Verfügbarkeit",
+                  description: "99.9% Uptime mit redundanten Systemen"
+                },
+                {
+                  icon: <Users className="w-8 h-8" />,
+                  title: "Support",
+                  description: "Persönlicher Support ohne Callcenter"
+                }
+              ].map((feature, index) => (
+                <div key={index} className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                  <div className="text-[#8B1538] mb-4">{feature.icon}</div>
+                  <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -291,49 +361,26 @@ const CloudLoesungen = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+      {/* Contact Section */}
+      <section id="contact" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-6">
-              Bereit für professionelles Hosting?
-            </h2>
-            <p className="text-xl text-blue-100 mb-8">
-              Kontaktieren Sie uns für eine kostenlose Beratung und finden Sie die 
-              perfekte Hosting-Lösung für Ihre Anforderungen.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/#contact">
-                <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl px-8 py-4">
-                  Kostenlose Beratung
-                </Button>
-              </a>
-              <Link to="/#services">
-                <Button size="lg" className="bg-blue-600 text-white border border-white hover:bg-blue-700 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl px-8 py-4">
-                  Zurück zu Leistungen
-                </Button>
-              </Link>
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                Hosting-Beratung anfragen
+              </h2>
+              <p className="text-xl text-gray-600">
+                Kontaktieren Sie uns für eine kostenlose Beratung
+              </p>
+            </div>
+            <div className="bg-white rounded-2xl p-8 shadow-2xl">
+              <ContactForm />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gradient-to-r from-gray-900 to-black text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-center md:text-left mb-4 md:mb-0">
-              © 2025 exis Solutions e. U.
-            </p>
-            <div className="flex space-x-6">
-              <Link to="/" className="hover:text-[#8B1538] transition-all duration-300 hover:scale-105">Home</Link>
-              <Link to="/impressum" className="hover:text-[#8B1538] transition-all duration-300 hover:scale-105">Impressum</Link>
-              <Link to="/datenschutz" className="hover:text-[#8B1538] transition-all duration-300 hover:scale-105">Datenschutz</Link>
-              <Link to="/cookies" className="hover:text-[#8B1538] transition-all duration-300 hover:scale-105">Cookies</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <CookieBanner />
     </div>
   );
 };
