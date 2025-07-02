@@ -39,7 +39,7 @@ const AnimatedServiceText = () => {
     const startProgressTimer = () => {
       progressInterval = setInterval(() => {
         setProgress(prev => {
-          const newProgress = prev + (100 / 80); // 4 Sekunden bis 100% (80 * 50ms für smoothere Animation)
+          const newProgress = prev + (100 / 250); // 4 Sekunden bis 100% (250 * 16ms für 60Hz)
           
           // Wenn Progress Bar voll ist, Text wechseln
           if (newProgress >= 100) {
@@ -69,7 +69,7 @@ const AnimatedServiceText = () => {
           
           return newProgress;
         });
-      }, 50); // 50ms Intervall für smoothere Animation
+      }, 16); // 16ms Intervall für 60Hz
     };
 
     // Progress-Timer nur starten wenn Text sichtbar ist
