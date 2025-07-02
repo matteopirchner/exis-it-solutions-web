@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Footer from "@/components/home/Footer";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { loadGAScript, enableGA, disableGA } from "@/utils/analytics";
+import { useToast } from "@/hooks/use-toast";
 
 const Cookies = () => {
   const [cookieSettings, setCookieSettings] = useState({
@@ -11,6 +13,7 @@ const Cookies = () => {
     analytics: false
   });
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+  const { toast } = useToast();
 
   useEffect(() => {
     const storedConsent = localStorage.getItem('cookieConsent');
@@ -24,6 +27,8 @@ const Cookies = () => {
   }, []);
 
   const saveSettings = () => {
+    console.log('Saving cookie settings:', cookieSettings);
+    
     localStorage.setItem('cookieConsent', JSON.stringify({
       ...cookieSettings,
       timestamp: Date.now()
@@ -31,15 +36,20 @@ const Cookies = () => {
     
     // Handle Analytics based on user choice
     if (cookieSettings.analytics) {
-      const { loadGAScript, enableGA } = require('@/utils/analytics');
       loadGAScript();
       enableGA();
+      console.log('Analytics enabled');
     } else {
-      const { disableGA } = require('@/utils/analytics');
       disableGA();
+      console.log('Analytics disabled');
     }
     
-    // Show only the custom dialog
+    // Show success notification
+    toast({
+      title: "Einstellungen gespeichert",
+      description: "Ihre Cookie-Einstellungen wurden erfolgreich aktualisiert.",
+    });
+    
     setShowSuccessDialog(true);
   };
 
