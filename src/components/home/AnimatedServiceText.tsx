@@ -78,11 +78,11 @@ const AnimatedServiceText = () => {
           {services[currentIndex]}
         </p>
         
-        {/* Minimalistischer Fortschrittsbalken */}
-        <div className="w-full max-w-md">
+        {/* Roter Fortschrittsbalken mit fester Breite */}
+        <div className="w-80">
           <Progress 
             value={progress} 
-            className="h-1 bg-gray-200"
+            className="h-1 bg-gray-200 [&>div]:bg-[#8B1538]"
           />
         </div>
       </div>
