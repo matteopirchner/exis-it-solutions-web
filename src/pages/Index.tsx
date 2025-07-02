@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Shield, Server, Network, Headphones, Cloud, Settings, Users, Award, Clock, CheckCircle, Star, Globe, Mail, Database, Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -172,7 +173,7 @@ const Index = () => {
                 size="lg" 
                 variant="outline" 
                 onClick={() => smoothScroll('services')} 
-                className="border-white text-white hover:bg-white hover:text-gray-900 hover:scale-105 transition-all duration-300 shadow-2xl text-lg px-8 py-4"
+                className="border-white text-black hover:bg-white hover:text-gray-900 hover:scale-105 transition-all duration-300 shadow-2xl text-lg px-8 py-4 bg-white"
               >
                 Unsere Leistungen
               </Button>
