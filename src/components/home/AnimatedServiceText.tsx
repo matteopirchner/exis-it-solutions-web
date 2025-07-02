@@ -30,6 +30,8 @@ const AnimatedServiceText = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
+  const nextIndex = (currentIndex + 1) % services.length;
+
   useEffect(() => {
     const interval = setInterval(() => {
       setIsTransitioning(true);
@@ -49,7 +51,13 @@ const AnimatedServiceText = () => {
   }, [services.length]);
 
   return (
-    <div className="mb-8 animate-fade-in">
+    <div className="mb-8 animate-fade-in relative">
+      {/* Next service preview - faded and above */}
+      <p className="text-lg md:text-xl font-light mb-1 text-[#8B1538]/30 text-center transition-opacity duration-500">
+        {services[nextIndex]}
+      </p>
+      
+      {/* Current service - main display */}
       <p 
         className={`text-2xl md:text-3xl font-light mb-2 text-[#8B1538] transition-all duration-500 ease-in-out transform ${
           isVisible && !isTransitioning 
