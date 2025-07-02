@@ -95,7 +95,7 @@ const CookieBanner = () => {
 
       {/* Cookie Settings Modal */}
       {showSettings && (
-        <div className="fixed inset-0 z-60 bg-black/50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[9999] bg-black/50 flex items-center justify-center p-4">
           <div className="bg-white rounded-lg max-w-md w-full p-6">
             <h3 className="text-lg font-semibold mb-4">Cookie-Einstellungen</h3>
             
