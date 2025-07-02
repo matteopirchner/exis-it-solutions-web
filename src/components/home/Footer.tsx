@@ -1,3 +1,4 @@
+
 import { Link, useLocation } from "react-router-dom";
 import { Mail, MapPin, Phone, Instagram } from "lucide-react";
 
@@ -26,7 +27,7 @@ const Footer = ({ smoothScroll }: FooterProps) => {
                 <img 
                   src="/lovable-uploads/a4979dec-233f-4407-a953-c36de27959ab.png" 
                   alt="exis Solutions" 
-                  className="h-12 mb-6 filter brightness-0 invert hover:scale-105 transition-transform duration-300"
+                  className="h-12 mb-6 filter brightness-0 invert hover:opacity-80 transition-opacity duration-200"
                 />
               </Link>
               <p className="text-gray-400 mb-6 leading-relaxed">
@@ -38,13 +39,13 @@ const Footer = ({ smoothScroll }: FooterProps) => {
               <div className="space-y-3 mb-6">
                 <div className="flex items-center space-x-3 text-gray-400">
                   <Mail className="w-4 h-4" />
-                  <a href="mailto:office@exis.at" className="hover:text-[#8B1538] transition-colors duration-300">
+                  <a href="mailto:office@exis.at" className="hover:text-[#8B1538] transition-colors duration-200">
                     office@exis.at
                   </a>
                 </div>
                 <div className="flex items-center space-x-3 text-gray-400">
                   <Phone className="w-4 h-4" />
-                  <a href="tel:+43123123" className="hover:text-[#8B1538] transition-colors duration-300">
+                  <a href="tel:+43123123" className="hover:text-[#8B1538] transition-colors duration-200">
                     +43 123123
                   </a>
                 </div>
@@ -60,7 +61,7 @@ const Footer = ({ smoothScroll }: FooterProps) => {
                   href="https://instagram.com/exis.at/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-[#8B1538] transition-colors duration-300 hover:scale-110 transform"
+                  className="text-gray-400 hover:text-[#8B1538] transition-colors duration-200"
                 >
                   <Instagram className="w-6 h-6" />
                 </a>
@@ -70,22 +71,22 @@ const Footer = ({ smoothScroll }: FooterProps) => {
             <div>
               <h4 className="font-semibold mb-6 text-lg">Services</h4>
               <ul className="space-y-3 text-gray-400">
-                <li><Link to="/services/netzwerkloesungen" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Netzwerklösungen</Link></li>
-                <li><Link to="/services/it-support" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">IT-Support</Link></li>
-                <li><Link to="/services/cloud-loesungen" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Hosting</Link></li>
-                <li><Link to="/services/sicherheitsloesungen" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Sicherheitslösungen</Link></li>
-                <li><Link to="/services/server-management" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Server-Management</Link></li>
-                <li><Link to="/services/it-beratung" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">IT-Beratung</Link></li>
-                <li><Link to="/services/individuelle-loesungen" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Individuelle Lösungen</Link></li>
+                <li><Link to="/services/netzwerkloesungen" className="hover:text-[#8B1538] transition-colors duration-200">Netzwerklösungen</Link></li>
+                <li><Link to="/services/it-support" className="hover:text-[#8B1538] transition-colors duration-200">IT-Support</Link></li>
+                <li><Link to="/services/cloud-loesungen" className="hover:text-[#8B1538] transition-colors duration-200">Hosting</Link></li>
+                <li><Link to="/services/sicherheitsloesungen" className="hover:text-[#8B1538] transition-colors duration-200">Sicherheitslösungen</Link></li>
+                <li><Link to="/services/server-management" className="hover:text-[#8B1538] transition-colors duration-200">Server-Management</Link></li>
+                <li><Link to="/services/it-beratung" className="hover:text-[#8B1538] transition-colors duration-200">IT-Beratung</Link></li>
+                <li><Link to="/services/individuelle-loesungen" className="hover:text-[#8B1538] transition-colors duration-200">Individuelle Lösungen</Link></li>
               </ul>
             </div>
             
             <div>
               <h4 className="font-semibold mb-6 text-lg">Rechtliches</h4>
               <ul className="space-y-3 text-gray-400">
-                <li><Link to="/impressum" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Impressum</Link></li>
-                <li><Link to="/datenschutz" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Datenschutz</Link></li>
-                <li><Link to="/cookies" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Cookies</Link></li>
+                <li><Link to="/impressum" className="hover:text-[#8B1538] transition-colors duration-200">Impressum</Link></li>
+                <li><Link to="/datenschutz" className="hover:text-[#8B1538] transition-colors duration-200">Datenschutz</Link></li>
+                <li><Link to="/cookies" className="hover:text-[#8B1538] transition-colors duration-200">Cookies</Link></li>
               </ul>
             </div>
           </div>
