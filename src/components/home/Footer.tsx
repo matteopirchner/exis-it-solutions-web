@@ -1,5 +1,6 @@
 
 import { Link } from "react-router-dom";
+import { Mail, MapPin, Phone, Instagram } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -17,6 +18,38 @@ const Footer = () => {
                 Ihr verlässlicher Partner für professionelle IT-Lösungen in Pongau/Salzburg. 
                 Von Netzwerken bis Hosting - wir machen Ihre IT zum Erfolgsfaktor.
               </p>
+              
+              {/* Contact Information */}
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center space-x-3 text-gray-400">
+                  <Mail className="w-4 h-4" />
+                  <a href="mailto:office@exis.at" className="hover:text-[#8B1538] transition-colors duration-300">
+                    office@exis.at
+                  </a>
+                </div>
+                <div className="flex items-center space-x-3 text-gray-400">
+                  <Phone className="w-4 h-4" />
+                  <a href="tel:+43123123" className="hover:text-[#8B1538] transition-colors duration-300">
+                    +43 123123
+                  </a>
+                </div>
+                <div className="flex items-center space-x-3 text-gray-400">
+                  <MapPin className="w-4 h-4" />
+                  <span>St Johann</span>
+                </div>
+              </div>
+
+              {/* Social Media */}
+              <div className="flex space-x-4">
+                <a 
+                  href="https://instagram.com/exis.at/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-[#8B1538] transition-colors duration-300 hover:scale-110 transform"
+                >
+                  <Instagram className="w-6 h-6" />
+                </a>
+              </div>
             </div>
             
             <div>
