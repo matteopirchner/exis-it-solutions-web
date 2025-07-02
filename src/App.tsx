@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
+import { useAnalytics } from "./hooks/useAnalytics";
 import Index from "./pages/Index";
 import Impressum from "./pages/Impressum";
 import Datenschutz from "./pages/Datenschutz";
@@ -20,6 +21,28 @@ import IndividuelleLösungen from "./pages/services/IndividuelleLösungen";
 
 const queryClient = new QueryClient();
 
+const AppRoutes = () => {
+  useAnalytics();
+  
+  return (
+    <Routes>
+      <Route path="/" element={<Index />} />
+      <Route path="/impressum" element={<Impressum />} />
+      <Route path="/datenschutz" element={<Datenschutz />} />
+      <Route path="/cookies" element={<Cookies />} />
+      <Route path="/services/netzwerkloesungen" element={<Netzwerkloesungen />} />
+      <Route path="/services/it-support" element={<ITSupport />} />
+      <Route path="/services/cloud-loesungen" element={<CloudLoesungen />} />
+      <Route path="/services/sicherheitsloesungen" element={<Sicherheitsloesungen />} />
+      <Route path="/services/server-management" element={<ServerManagement />} />
+      <Route path="/services/it-beratung" element={<ITBeratung />} />
+      <Route path="/services/individuelle-loesungen" element={<IndividuelleLösungen />} />
+      {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -27,21 +50,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/impressum" element={<Impressum />} />
-          <Route path="/datenschutz" element={<Datenschutz />} />
-          <Route path="/cookies" element={<Cookies />} />
-          <Route path="/services/netzwerkloesungen" element={<Netzwerkloesungen />} />
-          <Route path="/services/it-support" element={<ITSupport />} />
-          <Route path="/services/cloud-loesungen" element={<CloudLoesungen />} />
-          <Route path="/services/sicherheitsloesungen" element={<Sicherheitsloesungen />} />
-          <Route path="/services/server-management" element={<ServerManagement />} />
-          <Route path="/services/it-beratung" element={<ITBeratung />} />
-          <Route path="/services/individuelle-loesungen" element={<IndividuelleLösungen />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AppRoutes />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

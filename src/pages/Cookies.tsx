@@ -29,6 +29,16 @@ const Cookies = () => {
       timestamp: Date.now()
     }));
     
+    // Handle Analytics based on user choice
+    if (cookieSettings.analytics) {
+      const { loadGAScript, enableGA } = require('@/utils/analytics');
+      loadGAScript();
+      enableGA();
+    } else {
+      const { disableGA } = require('@/utils/analytics');
+      disableGA();
+    }
+    
     // Show only the custom dialog
     setShowSuccessDialog(true);
   };

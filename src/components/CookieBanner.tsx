@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { loadGAScript, enableGA, disableGA } from "@/utils/analytics";
 
 const CookieBanner = () => {
   const [showBanner, setShowBanner] = useState(false);
@@ -11,6 +12,12 @@ const CookieBanner = () => {
     const cookieConsent = localStorage.getItem('cookieConsent');
     if (!cookieConsent) {
       setShowBanner(true);
+    } else {
+      // Load GA script if user has already consented
+      const consent = JSON.parse(cookieConsent);
+      if (consent.analytics) {
+        loadGAScript();
+      }
     }
   }, []);
 
@@ -21,7 +28,10 @@ const CookieBanner = () => {
       timestamp: Date.now()
     }));
     setShowBanner(false);
-    // Initialize Google Analytics here if needed
+    
+    // Load and initialize Google Analytics
+    loadGAScript();
+    enableGA();
   };
 
   const acceptNecessary = () => {
@@ -31,6 +41,9 @@ const CookieBanner = () => {
       timestamp: Date.now()
     }));
     setShowBanner(false);
+    
+    // Disable Analytics if it was previously enabled
+    disableGA();
   };
 
   const saveSettings = (settings: { necessary: boolean; analytics: boolean }) => {
@@ -40,6 +53,14 @@ const CookieBanner = () => {
     }));
     setShowBanner(false);
     setShowSettings(false);
+    
+    // Handle Analytics based on user choice
+    if (settings.analytics) {
+      loadGAScript();
+      enableGA();
+    } else {
+      disableGA();
+    }
   };
 
   if (!showBanner) return null;
@@ -119,7 +140,7 @@ const CookieBanner = () => {
                 <div>
                   <p className="font-medium">Analyse-Cookies</p>
                   <p className="text-sm text-gray-600">
-                    Helfen uns, die Website zu verbessern
+                    Google Analytics - Helfen uns, die Website zu verbessern
                   </p>
                 </div>
                 <input
