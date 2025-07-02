@@ -1,6 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
+import AnimatedServiceText from "./AnimatedServiceText";
 
 interface HeroSectionProps {
   smoothScroll: (elementId: string) => void;
@@ -17,11 +18,7 @@ const HeroSection = ({ smoothScroll }: HeroSectionProps) => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto text-center text-white">
-          <div className="mb-8 animate-fade-in">
-            <p className="text-2xl md:text-3xl font-light mb-2 text-[#8B1538] animate-pulse">
-              Das ist IT. Das ist exis.
-            </p>
-          </div>
+          <AnimatedServiceText />
           <h1 className="text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent animate-fade-in">
             IT-Lösungen für Jedermann
           </h1>
