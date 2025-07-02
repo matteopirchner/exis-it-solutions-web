@@ -1,6 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Users, Database, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface NextcloudSectionProps {
   smoothScroll: (elementId: string) => void;
@@ -40,13 +41,14 @@ const NextcloudSection = ({ smoothScroll }: NextcloudSectionProps) => {
           </div>
 
           <div className="text-center">
-            <Button 
-              size="lg" 
-              onClick={() => smoothScroll('contact')} 
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4"
-            >
-              Nextcloud-Beratung anfragen
-            </Button>
+            <Link to="/services/cloud-loesungen">
+              <Button 
+                size="lg" 
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4"
+              >
+                Mehr erfahren
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
