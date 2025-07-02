@@ -39,10 +39,30 @@ const AnimatedServiceText = () => {
     const startProgressTimer = () => {
       progressInterval = setInterval(() => {
         setProgress(prev => {
-          if (prev >= 100) {
-            return 100;
+          const newProgress = prev + (100 / 60); // 6 Sekunden bis 100%
+          
+          // Wenn Progress Bar voll ist, Text wechseln
+          if (newProgress >= 100) {
+            // Text ausblenden
+            setIsTransitioning(true);
+            setIsVisible(false);
+            
+            setTimeout(() => {
+              setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
+              
+              setTimeout(() => {
+                setIsVisible(true);
+                
+                setTimeout(() => {
+                  setIsTransitioning(false);
+                }, 400);
+              }, 400);
+            }, 400);
+            
+            return 0; // Progress zurücksetzen
           }
-          return prev + (100 / 60); // 6 Sekunden bis 100% (zurück auf 6 Sekunden)
+          
+          return newProgress;
         });
       }, 100);
     };
@@ -52,30 +72,10 @@ const AnimatedServiceText = () => {
       startProgressTimer();
     }
 
-    // Text wechseln alle 6.5 Sekunden
-    const textInterval = setInterval(() => {
-      // Text und Progress gleichzeitig ausblenden nach 6 Sekunden
-      setTimeout(() => {
-        setIsTransitioning(true);
-        setIsVisible(false);
-        
-        setTimeout(() => {
-          setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
-          setProgress(0); // Reset progress während es unsichtbar ist
-          setIsVisible(true);
-          
-          setTimeout(() => {
-            setIsTransitioning(false);
-          }, 400);
-        }, 400);
-      }, 6000);
-    }, 6500);
-
     return () => {
       if (progressInterval) {
         clearInterval(progressInterval);
       }
-      clearInterval(textInterval);
     };
   }, [services.length, isVisible, isTransitioning]);
 
