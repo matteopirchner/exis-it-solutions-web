@@ -31,20 +31,25 @@ const AnimatedServiceText = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [isProgressFading, setIsProgressFading] = useState(false);
 
   useEffect(() => {
-    // Progress Timer - füllt sich über 5 Sekunden
+    // Progress Timer - füllt sich über 4.5 Sekunden, dann fade out
     const progressInterval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
-          return 0; // Reset für nächsten Begriff
+          return 100; // Bleibt bei 100%
         }
-        return prev + 2; // Alle 100ms um 2% erhöhen (5 Sekunden = 100%)
+        return prev + (100 / 45); // 4.5 Sekunden bis 100%
       });
     }, 100);
 
     // Text wechseln alle 5 Sekunden
     const textInterval = setInterval(() => {
+      // Progress fade out starten
+      setIsProgressFading(true);
+      
+      // Text transition
       setIsTransitioning(true);
       setIsVisible(false);
       
@@ -52,6 +57,7 @@ const AnimatedServiceText = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
         setIsVisible(true);
         setProgress(0); // Reset progress
+        setIsProgressFading(false); // Reset fade state
         
         setTimeout(() => {
           setIsTransitioning(false);
@@ -78,11 +84,13 @@ const AnimatedServiceText = () => {
           {services[currentIndex]}
         </p>
         
-        {/* Zentrierter roter Fortschrittsbalken mit fester Breite */}
+        {/* Zentrierter roter Fortschrittsbalken mit fester Breite und Fade-Out */}
         <div className="w-80 mx-auto">
           <Progress 
             value={progress} 
-            className="h-1 bg-gray-200 [&>div]:bg-[#8B1538]"
+            className={`h-1 bg-gray-200 [&>div]:bg-[#8B1538] transition-opacity duration-500 ${
+              isProgressFading ? 'opacity-0' : 'opacity-100'
+            }`}
           />
         </div>
       </div>
