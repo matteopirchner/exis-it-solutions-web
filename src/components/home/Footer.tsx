@@ -1,0 +1,51 @@
+
+import { Link } from "react-router-dom";
+
+const Footer = () => {
+  return (
+    <footer className="bg-gradient-to-r from-gray-900 to-black text-white py-16">
+      <div className="container mx-auto px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="col-span-1 md:col-span-2">
+              <img 
+                src="/lovable-uploads/a4979dec-233f-4407-a953-c36de27959ab.png" 
+                alt="exis Solutions" 
+                className="h-12 mb-6 filter brightness-0 invert hover:scale-105 transition-transform duration-300"
+              />
+              <p className="text-gray-400 mb-6 leading-relaxed">
+                Ihr verlässlicher Partner für professionelle IT-Lösungen in Pongau/Salzburg. 
+                Von Netzwerken bis Hosting - wir machen Ihre IT zum Erfolgsfaktor.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-6 text-lg">Services</h4>
+              <ul className="space-y-3 text-gray-400">
+                <li><Link to="/services/netzwerkloesungen" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Netzwerklösungen</Link></li>
+                <li><Link to="/services/it-support" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">IT-Support</Link></li>
+                <li><Link to="/services/cloud-loesungen" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Hosting</Link></li>
+                <li><Link to="/services/server-management" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Server-Management</Link></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-6 text-lg">Rechtliches</h4>
+              <ul className="space-y-3 text-gray-400">
+                <li><Link to="/impressum" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Impressum</Link></li>
+                <li><Link to="/datenschutz" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Datenschutz</Link></li>
+                <li><Link to="/cookies" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Cookies</Link></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+            <p>© 2025 exis Solutions e. U. Alle Rechte vorbehalten.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
