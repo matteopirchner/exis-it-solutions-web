@@ -46,8 +46,8 @@ const HeroSection = ({ smoothScroll }: HeroSectionProps) => {
         </div>
       </div>
       
-      {/* Scroll Indicator - Fixed positioning for perfect centering */}
-      <div className="fixed bottom-8 left-0 right-0 flex justify-center z-10 pointer-events-none">
+      {/* Scroll Indicator - Absolute positioning so it doesn't scroll with page */}
+      <div className="absolute bottom-8 left-0 right-0 flex justify-center z-10 pointer-events-none">
         <div className="animate-bounce">
           <ArrowDown className="w-8 h-8 text-white/60" />
         </div>
