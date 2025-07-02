@@ -1,5 +1,5 @@
 
-import { Network, Headphones, Globe, Shield, Server, Settings } from "lucide-react";
+import { Network, Headphones, Globe, Shield, Server, Settings, Wrench } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const ServicesSection = () => {
@@ -61,6 +61,13 @@ const ServicesSection = () => {
                 image: "/lovable-uploads/cfa8e99f-b09f-42a4-8d66-1dd218b41108.png",
                 icon: <Settings className="w-8 h-8" />,
                 link: "/services/it-beratung"
+              },
+              {
+                title: "Individuelle Lösungen",
+                description: "Maßgeschneiderte IT-Lösungen, Custom PC-Bau und spezialisierte Systeme für Ihre individuellen Anforderungen.",
+                image: "https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?w=800&h=600&fit=crop",
+                icon: <Wrench className="w-8 h-8" />,
+                link: "/services/individuelle-loesungen"
               }
             ].map((service, index) => (
               <Link key={index} to={service.link} className="group relative block">

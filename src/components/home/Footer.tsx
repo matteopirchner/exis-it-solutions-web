@@ -76,6 +76,7 @@ const Footer = ({ smoothScroll }: FooterProps) => {
                 <li><Link to="/services/sicherheitsloesungen" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Sicherheitslösungen</Link></li>
                 <li><Link to="/services/server-management" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Server-Management</Link></li>
                 <li><Link to="/services/it-beratung" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">IT-Beratung</Link></li>
+                <li><Link to="/services/individuelle-loesungen" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Individuelle Lösungen</Link></li>
               </ul>
             </div>
             

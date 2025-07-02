@@ -16,6 +16,7 @@ import CloudLoesungen from "./pages/services/CloudLoesungen";
 import Sicherheitsloesungen from "./pages/services/Sicherheitsloesungen";
 import ServerManagement from "./pages/services/ServerManagement";
 import ITBeratung from "./pages/services/ITBeratung";
+import IndividuelleLösungen from "./pages/services/IndividuelleLösungen";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
           <Route path="/services/sicherheitsloesungen" element={<Sicherheitsloesungen />} />
           <Route path="/services/server-management" element={<ServerManagement />} />
           <Route path="/services/it-beratung" element={<ITBeratung />} />
+          <Route path="/services/individuelle-loesungen" element={<IndividuelleLösungen />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
