@@ -42,7 +42,7 @@ const AnimatedServiceText = () => {
           if (prev >= 100) {
             return 100;
           }
-          return prev + (100 / 45); // 4.5 Sekunden bis 100% (anstatt 4 Sekunden)
+          return prev + (100 / 60); // 6 Sekunden bis 100% (anstatt 4.5 Sekunden)
         });
       }, 100);
     };
