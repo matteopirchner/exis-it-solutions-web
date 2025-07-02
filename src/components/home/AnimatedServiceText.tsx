@@ -27,7 +27,6 @@ const AnimatedServiceText = () => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   const nextIndex = (currentIndex + 1) % services.length;
@@ -35,34 +34,38 @@ const AnimatedServiceText = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIsTransitioning(true);
-      setIsVisible(false);
       
       setTimeout(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
-        setIsVisible(true);
         
         setTimeout(() => {
           setIsTransitioning(false);
-        }, 500);
-      }, 500);
+        }, 600);
+      }, 100);
     }, 6000);
 
     return () => clearInterval(interval);
   }, [services.length]);
 
   return (
-    <div className="mb-8 animate-fade-in relative">
-      {/* Next service preview - faded and above */}
-      <p className="text-lg md:text-xl font-light mb-1 text-[#8B1538]/30 text-center transition-opacity duration-500">
+    <div className="mb-8 animate-fade-in relative h-20 overflow-hidden">
+      {/* Next service preview - positioned above */}
+      <p 
+        className={`absolute text-2xl md:text-3xl font-light text-[#8B1538] text-center w-full transition-all duration-600 ease-in-out transform ${
+          isTransitioning 
+            ? 'translate-y-12 opacity-100' 
+            : '-translate-y-12 opacity-70'
+        }`}
+      >
         {services[nextIndex]}
       </p>
       
       {/* Current service - main display */}
       <p 
-        className={`text-2xl md:text-3xl font-light mb-2 text-[#8B1538] transition-all duration-500 ease-in-out transform ${
-          isVisible && !isTransitioning 
-            ? 'opacity-100 translate-y-0 scale-100' 
-            : 'opacity-0 translate-y-2 scale-95'
+        className={`absolute text-2xl md:text-3xl font-light text-[#8B1538] text-center w-full transition-all duration-600 ease-in-out transform ${
+          isTransitioning 
+            ? 'translate-y-12 opacity-0' 
+            : 'translate-y-0 opacity-100'
         }`}
       >
         {services[currentIndex]}
