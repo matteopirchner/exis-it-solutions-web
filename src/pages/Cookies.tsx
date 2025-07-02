@@ -1,11 +1,9 @@
-
 import { Button } from "@/components/ui/button";
 import { Cookie, Settings, Shield, CheckCircle, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Footer from "@/components/home/Footer";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { useToast } from "@/hooks/use-toast";
 
 const Cookies = () => {
   const [cookieSettings, setCookieSettings] = useState({
@@ -13,7 +11,6 @@ const Cookies = () => {
     analytics: false
   });
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
-  const { toast } = useToast();
 
   useEffect(() => {
     const storedConsent = localStorage.getItem('cookieConsent');
@@ -32,14 +29,8 @@ const Cookies = () => {
       timestamp: Date.now()
     }));
     
-    // Show custom dialog instead of browser alert
+    // Show only the custom dialog
     setShowSuccessDialog(true);
-    
-    // Also show a toast for better UX
-    toast({
-      title: "Einstellungen gespeichert",
-      description: "Ihre Cookie-Einstellungen wurden erfolgreich aktualisiert.",
-    });
   };
 
   return (
