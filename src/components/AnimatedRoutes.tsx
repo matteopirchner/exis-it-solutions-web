@@ -1,6 +1,7 @@
 
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import { useEffect, useRef } from "react";
 import PageTransition from "./PageTransition";
 import { useAnalytics } from "@/hooks/useAnalytics";
 import Index from "@/pages/Index";
@@ -18,7 +19,27 @@ import IndividuelleLösungen from "@/pages/services/IndividuelleLösungen";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
+  const scrollPositionRef = useRef(0);
   useAnalytics();
+  
+  // Speichere die aktuelle Scroll-Position bei Route-Änderung
+  useEffect(() => {
+    scrollPositionRef.current = window.scrollY;
+  }, [location.pathname]);
+  
+  // Verhindere sofortiges Scrollen nach oben
+  useEffect(() => {
+    const preventScroll = (e: Event) => {
+      e.preventDefault();
+      return false;
+    };
+    
+    window.addEventListener('scroll', preventScroll, { passive: false });
+    
+    return () => {
+      window.removeEventListener('scroll', preventScroll);
+    };
+  }, []);
   
   const handleAnimationComplete = () => {
     window.scrollTo(0, 0);
