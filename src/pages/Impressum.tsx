@@ -1,7 +1,7 @@
-
 import { Button } from "@/components/ui/button";
 import { Building, Mail, Globe, Scale } from "lucide-react";
 import { Link } from "react-router-dom";
+import Footer from "@/components/home/Footer";
 
 const Impressum = () => {
   const smoothScroll = (elementId: string) => {
@@ -226,22 +226,7 @@ const Impressum = () => {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-gradient-to-r from-gray-900 to-black text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-center md:text-left mb-4 md:mb-0">
-              © 2025 exis Solutions e. U.
-            </p>
-            <div className="flex space-x-6">
-              <Link to="/" className="hover:text-[#8B1538] transition-all duration-300 hover:scale-105">Home</Link>
-              <Link to="/impressum" className="hover:text-[#8B1538] transition-all duration-300 hover:scale-105">Impressum</Link>
-              <Link to="/datenschutz" className="hover:text-[#8B1538] transition-all duration-300 hover:scale-105">Datenschutz</Link>
-              <Link to="/cookies" className="hover:text-[#8B1538] transition-all duration-300 hover:scale-105">Cookies</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
