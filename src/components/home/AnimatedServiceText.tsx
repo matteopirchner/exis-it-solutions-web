@@ -29,65 +29,59 @@ const AnimatedServiceText = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [linePhase, setLinePhase] = useState<'red-loading' | 'white-loading'>('red-loading');
-  const [key, setKey] = useState(0); // Key für Animation-Reset
+  const [countdown, setCountdown] = useState(5);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      // Text wechseln
+    // Countdown Timer
+    const countdownInterval = setInterval(() => {
+      setCountdown(prev => {
+        if (prev <= 1) {
+          return 5; // Reset für nächsten Begriff
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    // Text wechseln alle 5 Sekunden
+    const textInterval = setInterval(() => {
       setIsTransitioning(true);
       setIsVisible(false);
       
       setTimeout(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
         setIsVisible(true);
+        setCountdown(5); // Reset countdown
         
         setTimeout(() => {
           setIsTransitioning(false);
-          // Farbe für nächsten Ladebalken wechseln
-          setLinePhase(prevPhase => 
-            prevPhase === 'red-loading' ? 'white-loading' : 'red-loading'
-          );
-          // Key erhöhen um Animation neu zu starten
-          setKey(prev => prev + 1);
         }, 300);
       }, 300);
-    }, 5000); // Alle 5 Sekunden wechseln
+    }, 5000);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(countdownInterval);
+      clearInterval(textInterval);
+    };
   }, [services.length]);
 
   return (
     <div className="mb-8 animate-fade-in relative">
       <div className="relative inline-block">
-        <p 
-          className={`text-2xl md:text-3xl font-light mb-2 text-[#8B1538] transition-all duration-500 ease-in-out transform ${
-            isVisible && !isTransitioning 
-              ? 'opacity-100 translate-y-0 scale-100' 
-              : 'opacity-0 translate-y-2 scale-95'
-          }`}
-        >
-          {services[currentIndex]}
-        </p>
-        
-        {/* Zentrierte Linie mit fester Länge als Ladebalken - jetzt länger */}
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-48 h-0.5">
-          {/* Basis-Linie */}
-          <div className={`absolute bottom-0 left-0 w-full h-0.5 ${
-            linePhase === 'red-loading' ? 'bg-white' : 'bg-[#8B1538]'
-          }`} />
-          
-          {/* Ladebalken der sich über die Anzeigezeit füllt */}
-          <div 
-            key={key} // Key zum Reset der Animation
-            className={`absolute bottom-0 left-0 h-0.5 ${
-              linePhase === 'red-loading' ? 'bg-[#8B1538]' : 'bg-white'
-            } ${
+        <div className="flex items-center gap-4">
+          <p 
+            className={`text-2xl md:text-3xl font-light text-[#8B1538] transition-all duration-500 ease-in-out transform ${
               isVisible && !isTransitioning 
-                ? 'w-full duration-[4400ms] ease-linear' 
-                : 'w-0 duration-0'
-            } transition-all`}
-          />
+                ? 'opacity-100 translate-y-0 scale-100' 
+                : 'opacity-0 translate-y-2 scale-95'
+            }`}
+          >
+            {services[currentIndex]}
+          </p>
+          
+          {/* Countdown Indikator */}
+          <div className="flex items-center justify-center min-w-[24px] h-6 rounded-full bg-[#8B1538] text-white text-sm font-medium">
+            {countdown}
+          </div>
         </div>
       </div>
     </div>
