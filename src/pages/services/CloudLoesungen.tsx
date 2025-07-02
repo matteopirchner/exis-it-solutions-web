@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Globe, ArrowLeft, Users, Database, Mail, Shield, CheckCircle, Server } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -17,9 +18,9 @@ const CloudLoesungen = () => {
               />
             </Link>
             <div className="flex items-center space-x-4">
-              <Link to="/" className="flex items-center text-gray-600 hover:text-[#8B1538] transition-colors">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Zurück zur Startseite
+              <Link to="/#services" className="flex items-center space-x-2 text-gray-700 hover:text-[#8B1538] transition-colors">
+                <ArrowLeft className="w-4 h-4" />
+                <span>Zurück</span>
               </Link>
             </div>
           </div>
@@ -42,7 +43,7 @@ const CloudLoesungen = () => {
               Von Website-Hosting bis zu kompletten Nextcloud-Instanzen - wir bieten sichere, 
               leistungsstarke Hosting-Lösungen für alle Ihre Anforderungen.
             </p>
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 px-8 py-4">
+            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl px-8 py-4">
               <a href="/#contact">Hosting-Beratung anfragen</a>
             </Button>
           </div>
@@ -299,11 +300,11 @@ const CloudLoesungen = () => {
               perfekte Hosting-Lösung für Ihre Anforderungen.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4">
+              <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl px-8 py-4">
                 <a href="/#contact">Kostenlose Beratung</a>
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4">
-                <Link to="/">Zurück zur Startseite</Link>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl px-8 py-4">
+                <Link to="/#services">Zurück zu Leistungen</Link>
               </Button>
             </div>
           </div>
