@@ -43,23 +43,26 @@ const AnimatedServiceText = () => {
           
           // Wenn Progress Bar voll ist, Text wechseln
           if (newProgress >= 100) {
-            // Text ausblenden
-            setIsTransitioning(true);
-            setIsVisible(false);
-            
+            // Progress Bar kurz bei 100% lassen
             setTimeout(() => {
-              setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
+              // Text ausblenden
+              setIsTransitioning(true);
+              setIsVisible(false);
               
               setTimeout(() => {
-                setIsVisible(true);
+                setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
                 
                 setTimeout(() => {
-                  setIsTransitioning(false);
+                  setIsVisible(true);
+                  
+                  setTimeout(() => {
+                    setIsTransitioning(false);
+                  }, 400);
                 }, 400);
               }, 400);
-            }, 400);
+            }, 500); // 500ms bei 100% bleiben
             
-            return 0; // Progress zurücksetzen
+            return 100; // Bei 100% bleiben
           }
           
           return newProgress;
@@ -70,6 +73,11 @@ const AnimatedServiceText = () => {
     // Progress-Timer nur starten wenn Text sichtbar ist
     if (isVisible && !isTransitioning) {
       startProgressTimer();
+    }
+
+    // Progress auf 0 setzen wenn Transition startet
+    if (isTransitioning) {
+      setProgress(0);
     }
 
     return () => {
