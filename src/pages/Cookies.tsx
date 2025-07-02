@@ -1,9 +1,9 @@
+
 import { Button } from "@/components/ui/button";
-import { Cookie, Settings, Shield, CheckCircle } from "lucide-react";
+import { Cookie, Settings, Shield, CheckCircle, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Footer from "@/components/home/Footer";
-import Navigation from "@/components/home/Navigation";
 
 const Cookies = () => {
   const [cookieSettings, setCookieSettings] = useState({
@@ -30,28 +30,30 @@ const Cookies = () => {
     alert('Cookie-Einstellungen gespeichert!');
   };
 
-  const smoothScroll = (elementId: string) => {
-    if (elementId === 'top') {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-      return;
-    }
-    
-    const element = document.getElementById(elementId);
-    if (element) {
-      const offsetTop = element.offsetTop - 80;
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   return (
     <div className="min-h-screen bg-background">
-      <Navigation smoothScroll={smoothScroll} />
+      {/* Navigation */}
+      <nav className="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/20">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <Link to="/" className="flex items-center space-x-2">
+              <img 
+                src="/lovable-uploads/a4979dec-233f-4407-a953-c36de27959ab.png" 
+                alt="exis Solutions" 
+                className="h-12 hover:scale-105 transition-transform duration-300"
+              />
+            </Link>
+            <div className="flex items-center space-x-4">
+              <Link to="/">
+                <Button variant="ghost" className="text-gray-700 hover:text-[#8B1538] transition-colors">
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  Zurück
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
