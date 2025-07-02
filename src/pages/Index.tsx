@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Shield, Server, Network, Headphones, Cloud, Settings } from "lucide-react";
 import { Link } from "react-router-dom";
 import ContactForm from "@/components/ContactForm";
 import GoogleMaps from "@/components/GoogleMaps";
@@ -8,32 +8,36 @@ import CookieBanner from "@/components/CookieBanner";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       {/* Navigation */}
-      <nav className="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-sm border-b">
+      <nav className="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/20">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center space-x-2">
               <img 
                 src="/lovable-uploads/a4979dec-233f-4407-a953-c36de27959ab.png" 
                 alt="exis Solutions" 
-                className="h-12"
+                className="h-12 hover:scale-105 transition-transform duration-300"
               />
             </Link>
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#about" className="text-gray-700 hover:text-[#8B1538] transition-colors">
+              <a href="#about" className="text-gray-700 hover:text-[#8B1538] transition-all duration-300 hover:scale-105 relative group">
                 Allgemeines
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B1538] transition-all duration-300 group-hover:w-full"></span>
               </a>
-              <a href="#services" className="text-gray-700 hover:text-[#8B1538] transition-colors">
+              <a href="#services" className="text-gray-700 hover:text-[#8B1538] transition-all duration-300 hover:scale-105 relative group">
                 Leistungen
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B1538] transition-all duration-300 group-hover:w-full"></span>
               </a>
-              <a href="#faq" className="text-gray-700 hover:text-[#8B1538] transition-colors">
+              <a href="#faq" className="text-gray-700 hover:text-[#8B1538] transition-all duration-300 hover:scale-105 relative group">
                 Fragen
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B1538] transition-all duration-300 group-hover:w-full"></span>
               </a>
-              <a href="#contact" className="text-gray-700 hover:text-[#8B1538] transition-colors">
+              <a href="#contact" className="text-gray-700 hover:text-[#8B1538] transition-all duration-300 hover:scale-105 relative group">
                 Kontakt Info
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B1538] transition-all duration-300 group-hover:w-full"></span>
               </a>
-              <Button className="bg-[#8B1538] hover:bg-[#8B1538]/90">
+              <Button className="bg-[#8B1538] hover:bg-[#8B1538]/90 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
                 <a href="#contact">Kontakt</a>
               </Button>
             </div>
@@ -41,175 +45,180 @@ const Index = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-gray-50 to-gray-100">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+      {/* Hero Section with Animated Background */}
+      <section className="relative pt-24 pb-20 min-h-screen flex items-center">
+        {/* Animated Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] animate-pulse"></div>
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#8B1538]/20 to-transparent"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-5xl mx-auto text-center text-white">
+            <div className="mb-8 animate-fade-in">
+              <p className="text-2xl md:text-3xl font-light mb-2 text-[#8B1538] animate-pulse">
+                Das ist IT. Das ist exis.
+              </p>
+            </div>
+            <h1 className="text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent animate-fade-in">
               IT-Lösungen für Ihr Unternehmen
             </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in">
               Professionelle IT-Services, Netzwerklösungen und Support für B2B und Privatkunden. 
               Ihre Experten für moderne Technologie in Österreich.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-[#8B1538] hover:bg-[#8B1538]/90">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in">
+              <Button size="lg" className="bg-[#8B1538] hover:bg-[#8B1538]/90 hover:scale-105 transition-all duration-300 shadow-2xl text-lg px-8 py-4">
                 <a href="#contact">Kostenloses Beratungsgespräch</a>
               </Button>
-              <Button size="lg" variant="outline">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 hover:scale-105 transition-all duration-300 shadow-2xl text-lg px-8 py-4">
                 <a href="#services">Unsere Leistungen</a>
               </Button>
             </div>
           </div>
         </div>
+        
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <ArrowDown className="w-8 h-8 text-white/60" />
+        </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-16 bg-white">
-        <div className="container mx-auto px-4">
+      {/* About Section with Parallax Effect */}
+      <section id="about" className="py-20 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 hover:scale-105 transition-transform duration-300">
                 Über exis Solutions
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
                 Wir sind Ihr verlässlicher Partner für alle IT-Angelegenheiten. Mit jahrelanger Erfahrung 
                 und modernsten Technologien sorgen wir dafür, dass Ihre IT-Infrastruktur reibungslos funktioniert.
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div className="relative group">
+                <div className="absolute -inset-4 bg-gradient-to-r from-[#8B1538]/20 to-transparent rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
                 <img 
-                  src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                  alt="Netzwerk-Infrastruktur" 
-                  className="rounded-lg shadow-lg"
+                  src="/lovable-uploads/ef49115e-c47a-4e3d-bd71-221f60451dae.png" 
+                  alt="Server-Infrastruktur" 
+                  className="relative rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              <div className="space-y-8">
+                <h3 className="text-3xl font-bold text-gray-900 mb-6">
                   Warum exis Solutions?
                 </h3>
-                <ul className="space-y-3 text-gray-600">
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-[#8B1538] rounded-full mr-3"></span>
-                    Individuelle Lösungen für Ihre Anforderungen
-                  </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-[#8B1538] rounded-full mr-3"></span>
-                    24/7 Support und schnelle Reaktionszeiten
-                  </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-[#8B1538] rounded-full mr-3"></span>
-                    Modernste Technologien und bewährte Lösungen
-                  </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-[#8B1538] rounded-full mr-3"></span>
-                    Transparente Preise und faire Konditionen
-                  </li>
-                </ul>
+                <div className="space-y-6">
+                  {[
+                    "Individuelle Lösungen für Ihre Anforderungen",
+                    "24/7 Support und schnelle Reaktionszeiten", 
+                    "Modernste Technologien und bewährte Lösungen",
+                    "Transparente Preise und faire Konditionen"
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-center group hover:scale-105 transition-all duration-300">
+                      <div className="w-4 h-4 bg-[#8B1538] rounded-full mr-4 group-hover:animate-pulse"></div>
+                      <p className="text-lg text-gray-600">{item}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
+      {/* Services Section with 3D Effects */}
+      <section id="services" className="py-20 bg-gradient-to-br from-gray-900 to-black text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                 Unsere Leistungen
               </h2>
-              <p className="text-xl text-gray-600">
+              <p className="text-xl text-gray-300">
                 Komplette IT-Services aus einer Hand
               </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <img 
-                  src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                  alt="Netzwerklösungen" 
-                  className="w-full h-48 object-cover rounded-lg mb-4"
-                />
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Netzwerklösungen</h3>
-                <p className="text-gray-600">
-                  Planung, Installation und Wartung von Netzwerk-Infrastrukturen für optimale Konnektivität.
-                </p>
-              </div>
-              
-              <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <img 
-                  src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                  alt="Software-Entwicklung" 
-                  className="w-full h-48 object-cover rounded-lg mb-4"
-                />
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Software-Entwicklung</h3>
-                <p className="text-gray-600">
-                  Maßgeschneiderte Software-Lösungen für Ihre spezifischen Geschäftsanforderungen.
-                </p>
-              </div>
-              
-              <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <img 
-                  src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                  alt="IT-Support" 
-                  className="w-full h-48 object-cover rounded-lg mb-4"
-                />
-                <h3 className="text-xl font-bold text-gray-900 mb-3">IT-Support</h3>
-                <p className="text-gray-600">
-                  Schnelle Hilfe bei IT-Problemen - vor Ort oder remote. Ihr zuverlässiger IT-Partner.
-                </p>
-              </div>
-              
-              <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <img 
-                  src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                  alt="Cloud-Lösungen" 
-                  className="w-full h-48 object-cover rounded-lg mb-4"
-                />
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Cloud-Lösungen</h3>
-                <p className="text-gray-600">
-                  Migration und Verwaltung von Cloud-Infrastrukturen für flexible und skalierbare IT.
-                </p>
-              </div>
-              
-              <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <img 
-                  src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                  alt="Sicherheitslösungen" 
-                  className="w-full h-48 object-cover rounded-lg mb-4"
-                />
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Sicherheitslösungen</h3>
-                <p className="text-gray-600">
-                  Umfassende IT-Security-Konzepte zum Schutz Ihrer Daten und Systeme.
-                </p>
-              </div>
-              
-              <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <img 
-                  src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                  alt="Beratung" 
-                  className="w-full h-48 object-cover rounded-lg mb-4"
-                />
-                <h3 className="text-xl font-bold text-gray-900 mb-3">IT-Beratung</h3>
-                <p className="text-gray-600">
-                  Strategische Beratung für Ihre IT-Landschaft und digitale Transformation.
-                </p>
-              </div>
+              {[
+                {
+                  title: "Netzwerklösungen",
+                  description: "Planung, Installation und Wartung von Netzwerk-Infrastrukturen für optimale Konnektivität.",
+                  image: "/lovable-uploads/2ce30bf2-ca83-4c26-b6c7-c9e91e256ed0.png",
+                  icon: <Network className="w-8 h-8" />
+                },
+                {
+                  title: "IT-Support",
+                  description: "Schnelle Hilfe bei IT-Problemen - vor Ort oder remote. Ihr zuverlässiger IT-Partner.",
+                  image: "/lovable-uploads/7b856886-75e6-4ed2-889b-761ab5eda86c.png",
+                  icon: <Headphones className="w-8 h-8" />
+                },
+                {
+                  title: "Cloud-Lösungen", 
+                  description: "Migration und Verwaltung von Cloud-Infrastrukturen für flexible und skalierbare IT.",
+                  image: "/lovable-uploads/b7a12c88-0d09-4e1d-ae96-63bfe163e728",
+                  icon: <Cloud className="w-8 h-8" />
+                },
+                {
+                  title: "Sicherheitslösungen",
+                  description: "Umfassende IT-Security-Konzepte zum Schutz Ihrer Daten und Systeme.",
+                  image: "/lovable-uploads/f924556c-da8a-4be4-ac24-bcfae1b5e9fa.png",
+                  icon: <Shield className="w-8 h-8" />
+                },
+                {
+                  title: "Server-Management",
+                  description: "Professionelle Verwaltung und Wartung Ihrer Server-Infrastruktur.",
+                  image: "/lovable-uploads/b4e37a6e-ccd1-4e28-ae38-f8fb3b22b264.png",
+                  icon: <Server className="w-8 h-8" />
+                },
+                {
+                  title: "IT-Beratung",
+                  description: "Strategische Beratung für Ihre IT-Landschaft und digitale Transformation.",
+                  image: "/lovable-uploads/cfa8e99f-b09f-42a4-8d66-1dd218b41108.png",
+                  icon: <Settings className="w-8 h-8" />
+                }
+              ].map((service, index) => (
+                <div key={index} className="group relative">
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-[#8B1538] to-red-600 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-300"></div>
+                  <div className="relative bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 hover:transform hover:scale-105 transition-all duration-300 border border-gray-700/50">
+                    <div className="relative h-48 mb-6 overflow-hidden rounded-xl">
+                      <img 
+                        src={service.image} 
+                        alt={service.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                      <div className="absolute top-4 left-4 text-[#8B1538] bg-white/10 backdrop-blur-sm rounded-full p-3">
+                        {service.icon}
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#8B1538] transition-colors duration-300">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-300 leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-16 bg-white">
+      <section id="faq" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
                 Häufig gestellte Fragen
               </h2>
               <p className="text-xl text-gray-600">
@@ -218,56 +227,44 @@ const Index = () => {
             </div>
             
             <div className="space-y-6">
-              <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  Wie schnell können Sie bei IT-Problemen helfen?
-                </h3>
-                <p className="text-gray-600">
-                  Wir bieten 24/7 Support mit garantierten Reaktionszeiten. Bei kritischen Problemen 
-                  sind wir innerhalb von 2 Stunden vor Ort oder remote verfügbar.
-                </p>
-              </div>
-              
-              <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  Arbeiten Sie auch mit kleinen Unternehmen?
-                </h3>
-                <p className="text-gray-600">
-                  Ja, wir betreuen sowohl große Unternehmen als auch kleine Betriebe und Privatpersonen. 
-                  Unsere Lösungen sind skalierbar und an Ihre Bedürfnisse angepasst.
-                </p>
-              </div>
-              
-              <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  Bieten Sie auch Wartungsverträge an?
-                </h3>
-                <p className="text-gray-600">
-                  Selbstverständlich! Wir bieten flexible Wartungsverträge, die präventive Wartung, 
-                  Updates und Priority-Support umfassen.
-                </p>
-              </div>
-              
-              <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  Wie sicher sind Cloud-Lösungen?
-                </h3>
-                <p className="text-gray-600">
-                  Wir implementieren nur DSGVO-konforme Cloud-Lösungen mit höchsten Sicherheitsstandards, 
-                  Verschlüsselung und regelmäßigen Backups.
-                </p>
-              </div>
+              {[
+                {
+                  question: "Wie schnell können Sie bei IT-Problemen helfen?",
+                  answer: "Wir bieten 24/7 Support mit garantierten Reaktionszeiten. Bei kritischen Problemen sind wir innerhalb von 2 Stunden vor Ort oder remote verfügbar."
+                },
+                {
+                  question: "Arbeiten Sie auch mit kleinen Unternehmen?",
+                  answer: "Ja, wir betreuen sowohl große Unternehmen als auch kleine Betriebe und Privatpersonen. Unsere Lösungen sind skalierbar und an Ihre Bedürfnisse angepasst."
+                },
+                {
+                  question: "Bieten Sie auch Wartungsverträge an?",
+                  answer: "Selbstverständlich! Wir bieten flexible Wartungsverträge, die präventive Wartung, Updates und Priority-Support umfassen."
+                },
+                {
+                  question: "Wie sicher sind Cloud-Lösungen?",
+                  answer: "Wir implementieren nur DSGVO-konforme Cloud-Lösungen mit höchsten Sicherheitsstandards, Verschlüsselung und regelmäßigen Backups."
+                }
+              ].map((faq, index) => (
+                <div key={index} className="group bg-gradient-to-r from-gray-50 to-white rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#8B1538]/20">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3 group-hover:text-[#8B1538] transition-colors duration-300">
+                    {faq.question}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 bg-gray-50">
+      <section id="contact" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
                 Kontakt aufnehmen
               </h2>
               <p className="text-xl text-gray-600">
@@ -275,29 +272,29 @@ const Index = () => {
               </p>
             </div>
             
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+              <div className="bg-white rounded-2xl p-8 shadow-2xl hover:shadow-3xl transition-shadow duration-300">
                 <ContactForm />
               </div>
               
               <div className="space-y-8">
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Kontakt Info</h3>
+                <div className="bg-white rounded-2xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Kontakt Info</h3>
                   <div className="space-y-4">
-                    <div>
-                      <h4 className="font-semibold text-gray-900">E-Mail</h4>
+                    <div className="group">
+                      <h4 className="font-semibold text-gray-900 group-hover:text-[#8B1538] transition-colors duration-300">E-Mail</h4>
                       <p className="text-gray-600">office@exis.at</p>
                     </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900">Adresse</h4>
+                    <div className="group">
+                      <h4 className="font-semibold text-gray-900 group-hover:text-[#8B1538] transition-colors duration-300">Adresse</h4>
                       <p className="text-gray-600">
                         exis Solutions e.U.<br />
                         [Ihre Adresse]<br />
                         [PLZ] [Ort], Österreich
                       </p>
                     </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900">Öffnungszeiten</h4>
+                    <div className="group">
+                      <h4 className="font-semibold text-gray-900 group-hover:text-[#8B1538] transition-colors duration-300">Öffnungszeiten</h4>
                       <p className="text-gray-600">
                         Mo-Fr: 8:00 - 18:00 Uhr<br />
                         24/7 Notfall-Support verfügbar
@@ -306,8 +303,8 @@ const Index = () => {
                   </div>
                 </div>
                 
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Standort</h3>
+                <div className="bg-white rounded-2xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Standort</h3>
                   <GoogleMaps />
                 </div>
               </div>
@@ -317,7 +314,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-gradient-to-r from-gray-900 to-black text-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -325,35 +322,35 @@ const Index = () => {
                 <img 
                   src="/lovable-uploads/a4979dec-233f-4407-a953-c36de27959ab.png" 
                   alt="exis Solutions" 
-                  className="h-12 mb-4 filter brightness-0 invert"
+                  className="h-12 mb-6 filter brightness-0 invert hover:scale-105 transition-transform duration-300"
                 />
-                <p className="text-gray-400 mb-4">
+                <p className="text-gray-400 mb-6 leading-relaxed">
                   Ihr verlässlicher Partner für professionelle IT-Lösungen in Österreich. 
                   Von Netzwerken bis Cloud - wir machen Ihre IT zum Erfolgsfaktor.
                 </p>
               </div>
               
               <div>
-                <h4 className="font-semibold mb-4">Services</h4>
-                <ul className="space-y-2 text-gray-400">
-                  <li><a href="#services" className="hover:text-[#8B1538] transition-colors">Netzwerklösungen</a></li>
-                  <li><a href="#services" className="hover:text-[#8B1538] transition-colors">Software-Entwicklung</a></li>
-                  <li><a href="#services" className="hover:text-[#8B1538] transition-colors">IT-Support</a></li>
-                  <li><a href="#services" className="hover:text-[#8B1538] transition-colors">Cloud-Lösungen</a></li>
+                <h4 className="font-semibold mb-6 text-lg">Services</h4>
+                <ul className="space-y-3 text-gray-400">
+                  <li><a href="#services" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Netzwerklösungen</a></li>
+                  <li><a href="#services" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">IT-Support</a></li>
+                  <li><a href="#services" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Cloud-Lösungen</a></li>
+                  <li><a href="#services" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Server-Management</a></li>
                 </ul>
               </div>
               
               <div>
-                <h4 className="font-semibold mb-4">Rechtliches</h4>
-                <ul className="space-y-2 text-gray-400">
-                  <li><Link to="/impressum" className="hover:text-[#8B1538] transition-colors">Impressum</Link></li>
-                  <li><Link to="/datenschutz" className="hover:text-[#8B1538] transition-colors">Datenschutz</Link></li>
-                  <li><Link to="/cookies" className="hover:text-[#8B1538] transition-colors">Cookies</Link></li>
+                <h4 className="font-semibold mb-6 text-lg">Rechtliches</h4>
+                <ul className="space-y-3 text-gray-400">
+                  <li><Link to="/impressum" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Impressum</Link></li>
+                  <li><Link to="/datenschutz" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Datenschutz</Link></li>
+                  <li><Link to="/cookies" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Cookies</Link></li>
                 </ul>
               </div>
             </div>
             
-            <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
               <p>© 2025 exis Solutions e. U. Alle Rechte vorbehalten.</p>
             </div>
           </div>
