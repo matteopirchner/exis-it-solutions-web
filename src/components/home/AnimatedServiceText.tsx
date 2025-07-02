@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 
 const AnimatedServiceText = () => {
@@ -28,20 +29,33 @@ const AnimatedServiceText = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [linePhase, setLinePhase] = useState<'filling' | 'overwriting'>('filling');
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsTransitioning(true);
-      setIsVisible(false);
+      // Phase 1: Line fills up completely (red)
+      setLinePhase('filling');
       
       setTimeout(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
-        setIsVisible(true);
+        // Phase 2: White line overwrites the red line
+        setLinePhase('overwriting');
         
         setTimeout(() => {
-          setIsTransitioning(false);
-        }, 500);
-      }, 500);
+          // Phase 3: Text transition
+          setIsTransitioning(true);
+          setIsVisible(false);
+          
+          setTimeout(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
+            setIsVisible(true);
+            
+            setTimeout(() => {
+              setIsTransitioning(false);
+              setLinePhase('filling'); // Reset for next cycle
+            }, 500);
+          }, 300);
+        }, 1000); // White line takes 1 second to overwrite
+      }, 4500); // Red line fills for 4.5 seconds
     }, 6000);
 
     return () => clearInterval(interval);
@@ -60,14 +74,26 @@ const AnimatedServiceText = () => {
           {services[currentIndex]}
         </p>
         
-        {/* Animated underline */}
-        <div 
-          className={`absolute bottom-0 left-0 h-0.5 bg-[#8B1538] transition-all duration-1000 ease-in-out ${
-            isTransitioning 
-              ? 'w-0' 
-              : 'w-full'
-          }`}
-        />
+        {/* Animated underline with red and white phases */}
+        <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-200">
+          {/* Red line that fills up */}
+          <div 
+            className={`absolute bottom-0 left-0 h-0.5 bg-[#8B1538] transition-all ease-linear ${
+              linePhase === 'filling' && !isTransitioning
+                ? 'w-full duration-[4500ms]' 
+                : 'w-0 duration-300'
+            }`}
+          />
+          
+          {/* White line that overwrites */}
+          <div 
+            className={`absolute bottom-0 left-0 h-0.5 bg-white transition-all duration-1000 ease-linear ${
+              linePhase === 'overwriting' 
+                ? 'w-full' 
+                : 'w-0'
+            }`}
+          />
+        </div>
       </div>
     </div>
   );
