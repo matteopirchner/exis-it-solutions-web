@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 
 const AnimatedServiceText = () => {
@@ -28,30 +29,27 @@ const AnimatedServiceText = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [linePhase, setLinePhase] = useState<'red-filling' | 'white-overwriting'>('red-filling');
+  const [linePhase, setLinePhase] = useState<'red-loading' | 'white-loading'>('red-loading');
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // Phase 1: Rote Linie überschreibt weiße Linie
-      setLinePhase('red-filling');
+      // Text wechseln
+      setIsTransitioning(true);
+      setIsVisible(false);
       
       setTimeout(() => {
-        // Phase 2: Text wechseln
-        setIsTransitioning(true);
-        setIsVisible(false);
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
+        setIsVisible(true);
         
         setTimeout(() => {
-          setCurrentIndex((prevIndex) => (prevIndex + 1) % services.length);
-          setIsVisible(true);
-          
-          setTimeout(() => {
-            setIsTransitioning(false);
-            // Phase 3: Weiße Linie überschreibt rote Linie
-            setLinePhase('white-overwriting');
-          }, 300);
+          setIsTransitioning(false);
+          // Farbe für nächsten Ladebalken wechseln
+          setLinePhase(prevPhase => 
+            prevPhase === 'red-loading' ? 'white-loading' : 'red-loading'
+          );
         }, 300);
-      }, 4000); // Rote Linie füllt 4 Sekunden
-    }, 6000);
+      }, 300);
+    }, 5000); // Alle 5 Sekunden wechseln
 
     return () => clearInterval(interval);
   }, [services.length]);
@@ -69,25 +67,20 @@ const AnimatedServiceText = () => {
           {services[currentIndex]}
         </p>
         
-        {/* Zentrierte Linie mit fester Länge */}
+        {/* Zentrierte Linie mit fester Länge als Ladebalken */}
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-32 h-0.5">
-          {/* Weiße Basis-Linie (immer sichtbar) */}
-          <div className="absolute bottom-0 left-0 w-full h-0.5 bg-white" />
+          {/* Basis-Linie */}
+          <div className={`absolute bottom-0 left-0 w-full h-0.5 ${
+            linePhase === 'red-loading' ? 'bg-white' : 'bg-[#8B1538]'
+          }`} />
           
-          {/* Rote Linie die von links nach rechts überschreibt */}
+          {/* Ladebalken der sich über 5 Sekunden füllt */}
           <div 
-            className={`absolute bottom-0 left-0 h-0.5 bg-[#8B1538] transition-all ease-linear ${
-              linePhase === 'red-filling'
-                ? 'w-full duration-[4000ms]' 
-                : 'w-0 duration-300'
-            }`}
-          />
-          
-          {/* Weiße Linie die von links nach rechts die rote überschreibt */}
-          <div 
-            className={`absolute bottom-0 left-0 h-0.5 bg-white transition-all ease-linear ${
-              linePhase === 'white-overwriting' 
-                ? 'w-full duration-[1500ms]' 
+            className={`absolute bottom-0 left-0 h-0.5 transition-all ease-linear ${
+              linePhase === 'red-loading' ? 'bg-[#8B1538]' : 'bg-white'
+            } ${
+              !isTransitioning 
+                ? 'w-full duration-[5000ms]' 
                 : 'w-0 duration-300'
             }`}
           />
