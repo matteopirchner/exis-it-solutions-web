@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Building, Mail, Globe, Scale } from "lucide-react";
 import { Link } from "react-router-dom";
 import Footer from "@/components/home/Footer";
+import Navigation from "@/components/home/Navigation";
 
 const Impressum = () => {
   const smoothScroll = (elementId: string) => {
@@ -25,41 +26,7 @@ const Impressum = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/20">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center space-x-2">
-              <img 
-                src="/lovable-uploads/a4979dec-233f-4407-a953-c36de27959ab.png" 
-                alt="exis Solutions" 
-                className="h-12 hover:scale-105 transition-transform duration-300"
-              />
-            </Link>
-            <div className="hidden md:flex items-center space-x-8">
-              <Link to="/" className="text-gray-700 hover:text-[#8B1538] transition-all duration-300 hover:scale-105 relative group">
-                Start
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B1538] transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-              <Link to="/#about" className="text-gray-700 hover:text-[#8B1538] transition-all duration-300 hover:scale-105 relative group">
-                Über Exis
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B1538] transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-              <Link to="/#services" className="text-gray-700 hover:text-[#8B1538] transition-all duration-300 hover:scale-105 relative group">
-                Leistungen
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B1538] transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-              <Link to="/#faq" className="text-gray-700 hover:text-[#8B1538] transition-all duration-300 hover:scale-105 relative group">
-                Fragen
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B1538] transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-              <Button className="bg-[#8B1538] hover:bg-[#8B1538]/90 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-                <Link to="/#contact">Kontakt</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navigation smoothScroll={smoothScroll} />
 
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
