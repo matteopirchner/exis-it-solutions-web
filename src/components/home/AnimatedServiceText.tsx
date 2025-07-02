@@ -3,28 +3,27 @@ import { useState, useEffect } from 'react';
 
 const AnimatedServiceText = () => {
   const services = [
-    "Firmennetzwerke jeder Größe",
-    "Gast Netz mit Voucher Funktion", 
-    "Netzwerksegmentierung mittels VLAN's",
-    "Schnelles, flächendeckendes WLAN",
-    "Nextcloud Hosting",
-    "Schnelles Webhosting",
-    "Sichere Backupsysteme",
-    "Spam freie Email-Server",
-    "24/7 IT-Support",
-    "Cloud-Lösungen",
-    "Server-Management",
-    "IT-Sicherheit",
-    "Professionelle Datensicherung",
-    "VPN-Lösungen",
-    "Microsoft 365 Integration",
-    "Domain-Verwaltung",
-    "SSL-Zertifikate",
-    "Monitoring & Überwachung",
-    "Hardware-Beschaffung",
-    "Software-Installation",
-    "Netzwerk-Optimierung",
-    "IT-Consulting"
+    "Enterprise Netzwerklösungen",
+    "Managed WLAN mit Voucher-System", 
+    "Professionelle VLAN-Segmentierung",
+    "Hochperformante WLAN-Infrastruktur",
+    "Managed Nextcloud Services",
+    "Premium Webhosting-Lösungen",
+    "Enterprise Backup-Systeme",
+    "Sichere Email-Server-Infrastruktur",
+    "24/7 Premium IT-Support",
+    "Professionelle Cloud-Services",
+    "Managed Server-Solutions",
+    "IT-Security & Compliance",
+    "Sichere VPN-Infrastrukturen",
+    "Microsoft 365 Enterprise Integration",
+    "Professional Domain-Management",
+    "Enterprise SSL-Zertifikate",
+    "Proaktives System-Monitoring",
+    "IT-Hardware Procurement",
+    "Professional Software-Deployment",
+    "Network Performance Optimization",
+    "Strategic IT-Consulting"
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -44,7 +43,7 @@ const AnimatedServiceText = () => {
           setIsTransitioning(false);
         }, 500);
       }, 500);
-    }, 4000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, [services.length]);
