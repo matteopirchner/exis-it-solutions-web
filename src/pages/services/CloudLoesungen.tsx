@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Globe, ArrowLeft, Users, Database, Mail, Shield, CheckCircle, Server } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -18,7 +17,7 @@ const CloudLoesungen = () => {
               />
             </Link>
             <div className="flex items-center space-x-4">
-              <Link to="/#services" className="flex items-center space-x-2 text-gray-700 hover:text-[#8B1538] transition-colors">
+              <Link to="/" className="flex items-center space-x-2 text-gray-700 hover:text-[#8B1538] transition-colors">
                 <ArrowLeft className="w-4 h-4" />
                 <span>Zurück</span>
               </Link>
@@ -303,8 +302,8 @@ const CloudLoesungen = () => {
               <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl px-8 py-4">
                 <a href="/#contact">Kostenlose Beratung</a>
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl px-8 py-4">
-                <Link to="/#services">Zurück zu Leistungen</Link>
+              <Button size="lg" className="bg-blue-600 text-white border border-white hover:bg-blue-700 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl px-8 py-4">
+                <Link to="/">Zurück zu Leistungen</Link>
               </Button>
             </div>
           </div>
