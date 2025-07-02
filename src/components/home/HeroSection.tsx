@@ -23,7 +23,7 @@ const HeroSection = ({ smoothScroll }: HeroSectionProps) => {
             </p>
           </div>
           <h1 className="text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent animate-fade-in">
-            IT-Lösungen für Ihr Unternehmen
+            IT-Lösungen für Jedermann
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in">
             Professionelle IT-Services, Hosting-Lösungen und Support für B2B und Privatkunden. 
