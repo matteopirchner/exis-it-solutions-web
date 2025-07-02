@@ -2,8 +2,33 @@
 import { Button } from "@/components/ui/button";
 import { Cookie, Settings, Shield, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const Cookies = () => {
+  const [cookieSettings, setCookieSettings] = useState({
+    necessary: true,
+    analytics: false
+  });
+
+  useEffect(() => {
+    const storedConsent = localStorage.getItem('cookieConsent');
+    if (storedConsent) {
+      const parsed = JSON.parse(storedConsent);
+      setCookieSettings({
+        necessary: true,
+        analytics: parsed.analytics || false
+      });
+    }
+  }, []);
+
+  const saveSettings = () => {
+    localStorage.setItem('cookieConsent', JSON.stringify({
+      ...cookieSettings,
+      timestamp: Date.now()
+    }));
+    alert('Cookie-Einstellungen gespeichert!');
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
@@ -30,10 +55,6 @@ const Cookies = () => {
                 Fragen
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B1538] transition-all duration-300 group-hover:w-full"></span>
               </Link>
-              <Link to="/#contact" className="text-gray-700 hover:text-[#8B1538] transition-all duration-300 hover:scale-105 relative group">
-                Kontakt Info
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B1538] transition-all duration-300 group-hover:w-full"></span>
-              </Link>
               <Button className="bg-[#8B1538] hover:bg-[#8B1538]/90 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
                 <Link to="/#contact">Kontakt</Link>
               </Button>
@@ -43,12 +64,12 @@ const Cookies = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
+      <section className="relative pt-32 pb-16 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.1%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] animate-pulse"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <div className="mb-8">
-              <Cookie className="w-20 h-20 text-[#8B1538] mx-auto mb-6 animate-bounce" />
+              <Cookie className="w-16 h-16 text-[#8B1538] mx-auto mb-6" />
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Cookie-Richtlinie
@@ -128,6 +149,47 @@ const Cookies = () => {
                       <p className="mb-4">
                         Bei Ihrem ersten Besuch fragen wir Sie über ein Cookie-Banner nach Ihrer Zustimmung. Sie können Ihre Einstellungen jederzeit ändern.
                       </p>
+                    </div>
+
+                    {/* Cookie Settings Section */}
+                    <div className="bg-gradient-to-r from-[#8B1538]/5 to-transparent rounded-2xl p-6 border border-[#8B1538]/20">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-6">Cookie-Einstellungen verwalten</h3>
+                      
+                      <div className="space-y-4 mb-6">
+                        <div className="flex items-center justify-between p-4 border rounded-lg">
+                          <div>
+                            <p className="font-medium text-gray-900">Notwendige Cookies</p>
+                            <p className="text-sm text-gray-600">
+                              Erforderlich für die Grundfunktionen der Website
+                            </p>
+                          </div>
+                          <input
+                            type="checkbox"
+                            checked={cookieSettings.necessary}
+                            disabled
+                            className="w-5 h-5"
+                          />
+                        </div>
+                        
+                        <div className="flex items-center justify-between p-4 border rounded-lg">
+                          <div>
+                            <p className="font-medium text-gray-900">Analyse-Cookies</p>
+                            <p className="text-sm text-gray-600">
+                              Helfen uns, die Website zu verbessern
+                            </p>
+                          </div>
+                          <input
+                            type="checkbox"
+                            checked={cookieSettings.analytics}
+                            onChange={(e) => setCookieSettings(prev => ({ ...prev, analytics: e.target.checked }))}
+                            className="w-5 h-5"
+                          />
+                        </div>
+                      </div>
+
+                      <Button onClick={saveSettings} className="bg-[#8B1538] hover:bg-[#8B1538]/90">
+                        Einstellungen speichern
+                      </Button>
                     </div>
 
                     <div className="bg-gradient-to-r from-[#8B1538]/5 to-transparent rounded-2xl p-6 border border-[#8B1538]/20">

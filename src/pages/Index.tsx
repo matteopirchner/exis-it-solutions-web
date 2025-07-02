@@ -1,5 +1,6 @@
+
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Shield, Server, Network, Headphones, Cloud, Settings } from "lucide-react";
+import { ArrowDown, Shield, Server, Network, Headphones, Cloud, Settings, Users, Award, Clock, CheckCircle, Star, Globe, Mail, Database } from "lucide-react";
 import { Link } from "react-router-dom";
 import ContactForm from "@/components/ContactForm";
 import GoogleMaps from "@/components/GoogleMaps";
@@ -21,7 +22,7 @@ const Index = () => {
             </Link>
             <div className="hidden md:flex items-center space-x-8">
               <a href="#about" className="text-gray-700 hover:text-[#8B1538] transition-all duration-300 hover:scale-105 relative group">
-                Allgemeines
+                Über Exis
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B1538] transition-all duration-300 group-hover:w-full"></span>
               </a>
               <a href="#services" className="text-gray-700 hover:text-[#8B1538] transition-all duration-300 hover:scale-105 relative group">
@@ -30,10 +31,6 @@ const Index = () => {
               </a>
               <a href="#faq" className="text-gray-700 hover:text-[#8B1538] transition-all duration-300 hover:scale-105 relative group">
                 Fragen
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B1538] transition-all duration-300 group-hover:w-full"></span>
-              </a>
-              <a href="#contact" className="text-gray-700 hover:text-[#8B1538] transition-all duration-300 hover:scale-105 relative group">
-                Kontakt Info
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B1538] transition-all duration-300 group-hover:w-full"></span>
               </a>
               <Button className="bg-[#8B1538] hover:bg-[#8B1538]/90 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-white">
@@ -63,7 +60,7 @@ const Index = () => {
               IT-Lösungen für Ihr Unternehmen
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in">
-              Professionelle IT-Services, Netzwerklösungen und Support für B2B und Privatkunden. 
+              Professionelle IT-Services, Hosting-Lösungen und Support für B2B und Privatkunden. 
               Ihre Experten für moderne Technologie in Österreich.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in">
@@ -83,6 +80,30 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Stats Section */}
+      <section className="py-16 bg-gradient-to-r from-[#8B1538] to-red-600 text-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="group hover:scale-105 transition-transform duration-300">
+              <div className="text-4xl md:text-5xl font-bold mb-2">150+</div>
+              <div className="text-sm md:text-base opacity-90">Zufriedene Kunden</div>
+            </div>
+            <div className="group hover:scale-105 transition-transform duration-300">
+              <div className="text-4xl md:text-5xl font-bold mb-2">24/7</div>
+              <div className="text-sm md:text-base opacity-90">Support</div>
+            </div>
+            <div className="group hover:scale-105 transition-transform duration-300">
+              <div className="text-4xl md:text-5xl font-bold mb-2">99.9%</div>
+              <div className="text-sm md:text-base opacity-90">Uptime</div>
+            </div>
+            <div className="group hover:scale-105 transition-transform duration-300">
+              <div className="text-4xl md:text-5xl font-bold mb-2">5+</div>
+              <div className="text-sm md:text-base opacity-90">Jahre Erfahrung</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* About Section with Parallax Effect */}
       <section id="about" className="py-20 bg-white relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white"></div>
@@ -93,12 +114,12 @@ const Index = () => {
                 Über exis Solutions
               </h2>
               <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                Wir sind Ihr verlässlicher Partner für alle IT-Angelegenheiten. Mit jahrelanger Erfahrung 
-                und modernsten Technologien sorgen wir dafür, dass Ihre IT-Infrastruktur reibungslos funktioniert.
+                Seit über 5 Jahren sind wir Ihr verlässlicher Partner für alle IT-Angelegenheiten. Mit modernsten 
+                Technologien und persönlichem Service sorgen wir dafür, dass Ihre IT-Infrastruktur reibungslos funktioniert.
               </p>
             </div>
             
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
               <div className="relative group">
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#8B1538]/20 to-transparent rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
                 <img 
@@ -113,10 +134,11 @@ const Index = () => {
                 </h3>
                 <div className="space-y-6">
                   {[
-                    "Individuelle Lösungen für Ihre Anforderungen",
-                    "24/7 Support und schnelle Reaktionszeiten", 
-                    "Modernste Technologien und bewährte Lösungen",
-                    "Transparente Preise und faire Konditionen"
+                    "Über 150 zufriedene Kunden vertrauen uns",
+                    "24/7 Support und garantierte Reaktionszeiten", 
+                    "Modernste Hosting-Infrastruktur mit 99.9% Uptime",
+                    "Transparente Preise und faire Konditionen",
+                    "Persönlicher Ansprechpartner für alle Anliegen"
                   ].map((item, index) => (
                     <div key={index} className="flex items-center group hover:scale-105 transition-all duration-300">
                       <div className="w-4 h-4 bg-[#8B1538] rounded-full mr-4 group-hover:animate-pulse"></div>
@@ -124,6 +146,37 @@ const Index = () => {
                     </div>
                   ))}
                 </div>
+              </div>
+            </div>
+
+            {/* Testimonials */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="flex items-center mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <p className="text-gray-600 mb-4">"Exis Solutions hat unsere komplette IT-Infrastruktur modernisiert. Hervorragender Service!"</p>
+                <p className="font-semibold text-gray-900">- KMU Kunde</p>
+              </div>
+              <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="flex items-center mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <p className="text-gray-600 mb-4">"Nextcloud Setup war perfekt. Endlich unabhängig von Microsoft Teams!"</p>
+                <p className="font-semibold text-gray-900">- Privatkunde</p>
+              </div>
+              <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="flex items-center mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <p className="text-gray-600 mb-4">"24/7 Support funktioniert wirklich. Schnelle Hilfe bei allen Problemen."</p>
+                <p className="font-semibold text-gray-900">- Unternehmenskunde</p>
               </div>
             </div>
           </div>
@@ -162,11 +215,12 @@ const Index = () => {
                   link: "/services/it-support"
                 },
                 {
-                  title: "Cloud-Lösungen", 
-                  description: "Migration und Verwaltung von Cloud-Infrastrukturen für flexible und skalierbare IT.",
+                  title: "Hosting", 
+                  description: "Professionelles Website-Hosting, Nextcloud-Instanzen als Teams/OneDrive-Ersatz und Mailserver-Lösungen.",
                   image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop",
-                  icon: <Cloud className="w-8 h-8" />,
-                  link: "/services/cloud-loesungen"
+                  icon: <Globe className="w-8 h-8" />,
+                  link: "/services/cloud-loesungen",
+                  highlight: true
                 },
                 {
                   title: "Sicherheitslösungen",
@@ -191,8 +245,13 @@ const Index = () => {
                 }
               ].map((service, index) => (
                 <Link key={index} to={service.link} className="group relative block">
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-[#8B1538] to-red-600 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-300"></div>
+                  <div className={`absolute -inset-0.5 bg-gradient-to-r ${service.highlight ? 'from-yellow-400 to-orange-500' : 'from-[#8B1538] to-red-600'} rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-300`}></div>
                   <div className="relative bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 hover:transform hover:scale-105 transition-all duration-300 border border-gray-700/50 h-full">
+                    {service.highlight && (
+                      <div className="absolute top-2 right-2 bg-yellow-400 text-black px-2 py-1 rounded-full text-xs font-bold animate-pulse">
+                        EMPFOHLEN
+                      </div>
+                    )}
                     <div className="relative h-48 mb-6 overflow-hidden rounded-xl">
                       <img 
                         src={service.image} 
@@ -218,6 +277,47 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Hosting Highlight Section */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-100">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Nextcloud - Ihre Microsoft Teams Alternative
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Werden Sie unabhängig von Microsoft! Unsere Nextcloud-Lösungen bieten alles, 
+                was Sie für moderne Zusammenarbeit brauchen - und das auf Ihren eigenen Servern.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+              <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 text-center">
+                <Users className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Team-Kollaboration</h3>
+                <p className="text-gray-600">Chat, Video-Calls, Dokumentenbearbeitung - alles in einem Tool</p>
+              </div>
+              <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 text-center">
+                <Database className="w-12 h-12 text-green-600 mx-auto mb-4" />
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Sicherer Dateispeicher</h3>
+                <p className="text-gray-600">OneDrive-Ersatz mit vollständiger Kontrolle über Ihre Daten</p>
+              </div>
+              <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 text-center">
+                <Mail className="w-12 h-12 text-purple-600 mx-auto mb-4" />
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Integrierte E-Mail</h3>
+                <p className="text-gray-600">Komplette E-Mail-Lösung mit Kalender und Kontakten</p>
+              </div>
+            </div>
+
+            <div className="text-center">
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4">
+                <a href="#contact">Nextcloud-Beratung anfragen</a>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section id="faq" className="py-20 bg-white">
         <div className="container mx-auto px-4">
@@ -238,16 +338,20 @@ const Index = () => {
                   answer: "Wir bieten 24/7 Support mit garantierten Reaktionszeiten. Bei kritischen Problemen sind wir innerhalb von 2 Stunden vor Ort oder remote verfügbar."
                 },
                 {
+                  question: "Was kostet eine Nextcloud-Installation?",
+                  answer: "Die Kosten variieren je nach Anzahl der Benutzer und gewünschten Features. Kontaktieren Sie uns für ein individuelles Angebot - bereits ab 50€/Monat verfügbar."
+                },
+                {
                   question: "Arbeiten Sie auch mit kleinen Unternehmen?",
                   answer: "Ja, wir betreuen sowohl große Unternehmen als auch kleine Betriebe und Privatpersonen. Unsere Lösungen sind skalierbar und an Ihre Bedürfnisse angepasst."
                 },
                 {
-                  question: "Bieten Sie auch Wartungsverträge an?",
-                  answer: "Selbstverständlich! Wir bieten flexible Wartungsverträge, die präventive Wartung, Updates und Priority-Support umfassen."
+                  question: "Wie sicher sind Ihre Hosting-Lösungen?",
+                  answer: "Wir implementieren nur DSGVO-konforme Lösungen mit höchsten Sicherheitsstandards, SSL-Verschlüsselung und täglichen Backups. Ihre Daten bleiben in Österreich."
                 },
                 {
-                  question: "Wie sicher sind Cloud-Lösungen?",
-                  answer: "Wir implementieren nur DSGVO-konforme Cloud-Lösungen mit höchsten Sicherheitsstandards, Verschlüsselung und regelmäßigen Backups."
+                  question: "Bieten Sie auch Wartungsverträge an?",
+                  answer: "Selbstverständlich! Wir bieten flexible Wartungsverträge, die präventive Wartung, Updates und Priority-Support umfassen."
                 }
               ].map((faq, index) => (
                 <div key={index} className="group bg-gradient-to-r from-gray-50 to-white rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#8B1538]/20">
@@ -331,7 +435,7 @@ const Index = () => {
                 />
                 <p className="text-gray-400 mb-6 leading-relaxed">
                   Ihr verlässlicher Partner für professionelle IT-Lösungen in Österreich. 
-                  Von Netzwerken bis Cloud - wir machen Ihre IT zum Erfolgsfaktor.
+                  Von Netzwerken bis Hosting - wir machen Ihre IT zum Erfolgsfaktor.
                 </p>
               </div>
               
@@ -340,7 +444,7 @@ const Index = () => {
                 <ul className="space-y-3 text-gray-400">
                   <li><Link to="/services/netzwerkloesungen" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Netzwerklösungen</Link></li>
                   <li><Link to="/services/it-support" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">IT-Support</Link></li>
-                  <li><Link to="/services/cloud-loesungen" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Cloud-Lösungen</Link></li>
+                  <li><Link to="/services/cloud-loesungen" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Hosting</Link></li>
                   <li><Link to="/services/server-management" className="hover:text-[#8B1538] transition-colors duration-300 hover:scale-105 inline-block">Server-Management</Link></li>
                 </ul>
               </div>
