@@ -36,8 +36,8 @@ const Index = () => {
                 Kontakt Info
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#8B1538] transition-all duration-300 group-hover:w-full"></span>
               </a>
-              <Button className="bg-[#8B1538] hover:bg-[#8B1538]/90 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-black">
-                <a href="#contact" className="text-black">Kontakt</a>
+              <Button className="bg-[#8B1538] hover:bg-[#8B1538]/90 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-white">
+                <a href="#contact" className="text-white">Kontakt</a>
               </Button>
             </div>
           </div>
@@ -45,7 +45,7 @@ const Index = () => {
       </nav>
 
       {/* Hero Section with Animated Background */}
-      <section className="relative pt-24 pb-20 min-h-screen flex items-center">
+      <section className="relative pt-32 pb-20 min-h-screen flex items-center">
         {/* Animated Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.1%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] animate-pulse"></div>
@@ -67,8 +67,8 @@ const Index = () => {
               Ihre Experten für moderne Technologie in Österreich.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in">
-              <Button size="lg" className="bg-[#8B1538] hover:bg-[#8B1538]/90 hover:scale-105 transition-all duration-300 shadow-2xl text-lg px-8 py-4 text-black">
-                <a href="#contact" className="text-black">Kostenloses Beratungsgespräch</a>
+              <Button size="lg" className="bg-[#8B1538] hover:bg-[#8B1538]/90 hover:scale-105 transition-all duration-300 shadow-2xl text-lg px-8 py-4 text-white">
+                <a href="#contact" className="text-white">Kostenloses Beratungsgespräch</a>
               </Button>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 hover:scale-105 transition-all duration-300 shadow-2xl text-lg px-8 py-4">
                 <a href="#services" className="text-black">Unsere Leistungen</a>

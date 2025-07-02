@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Settings, ArrowLeft, Lightbulb, Target, Users } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -33,7 +32,7 @@ const ITBeratung = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-24 pb-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
+      <section className="pt-32 pb-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex justify-center mb-8">
