@@ -81,14 +81,14 @@ const AnimatedServiceText = () => {
           {services[currentIndex]}
         </p>
         
-        {/* Zentrierter roter Fortschrittsbalken - fadedgleichzeitig mit dem Text */}
+        {/* Zentrierter roter Fortschrittsbalken - komplett ausgeblendet während Transition */}
         <div className="w-80 mx-auto">
           <Progress 
             value={progress} 
-            className={`h-1 bg-gray-200 [&>div]:bg-[#8B1538] transition-all duration-700 ease-in-out ${
+            className={`h-1 [&>div]:bg-[#8B1538] transition-all duration-700 ease-in-out ${
               isVisible && !isTransitioning 
-                ? 'opacity-100 scale-100' 
-                : 'opacity-0 scale-95'
+                ? 'opacity-100 scale-100 bg-gray-200' 
+                : 'opacity-0 scale-95 bg-transparent'
             }`}
           />
         </div>
