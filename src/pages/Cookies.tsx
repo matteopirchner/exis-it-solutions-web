@@ -106,14 +106,18 @@ const Cookies = () => {
                           <CheckCircle className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
                           <div>
                             <h4 className="font-semibold text-gray-900">Notwendige Cookies</h4>
-                            <p className="text-gray-600">Zur Sicherstellung der Website-Funktionalität</p>
+                            <p className="text-sm text-gray-600">
+                              Zur Sicherstellung der Website-Funktionalität
+                            </p>
                           </div>
                         </div>
                         <div className="flex items-start space-x-3">
                           <Settings className="w-5 h-5 text-[#8B1538] mt-1 flex-shrink-0" />
                           <div>
                             <h4 className="font-semibold text-gray-900">Analyse-Cookies</h4>
-                            <p className="text-gray-600">Google Analytics zur Verbesserung unseres Angebots</p>
+                            <p className="text-sm text-gray-600">
+                              Google Analytics zur Verbesserung unseres Angebots
+                            </p>
                           </div>
                         </div>
                       </div>
