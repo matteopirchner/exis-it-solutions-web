@@ -77,19 +77,16 @@ const AnimatedServiceText = () => {
             linePhase === 'red-loading' ? 'bg-white' : 'bg-[#8B1538]'
           }`} />
           
-          {/* Ladebalken der sich über 5 Sekunden füllt */}
+          {/* Ladebalken der sich über die Anzeigezeit füllt */}
           <div 
             key={key} // Key zum Reset der Animation
             className={`absolute bottom-0 left-0 h-0.5 ${
               linePhase === 'red-loading' ? 'bg-[#8B1538]' : 'bg-white'
             } ${
-              !isTransitioning 
-                ? 'w-full duration-[5000ms] ease-linear' 
-                : 'w-0 duration-300'
+              isVisible && !isTransitioning 
+                ? 'w-full duration-[4400ms] ease-linear' 
+                : 'w-0 duration-0'
             } transition-all`}
-            style={{
-              width: !isTransitioning ? '100%' : '0%'
-            }}
           />
         </div>
       </div>
