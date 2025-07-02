@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { X } from "lucide-react";
 
 const CookieBanner = () => {
   const [showBanner, setShowBanner] = useState(false);
@@ -93,18 +94,25 @@ const CookieBanner = () => {
         </div>
       </div>
 
-      {/* Cookie Settings Modal */}
+      {/* Cookie Settings Popup - positioned as overlay on website */}
       {showSettings && (
-        <div className="fixed inset-0 z-[9999] bg-black/50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg max-w-md w-full p-6">
-            <h3 className="text-lg font-semibold mb-4">Cookie-Einstellungen</h3>
+        <div className="fixed bottom-20 right-4 z-[60] max-w-sm w-full animate-fade-in">
+          <div className="bg-white rounded-lg shadow-2xl border p-6 relative">
+            <button
+              onClick={() => setShowSettings(false)}
+              className="absolute right-3 top-3 p-1 rounded-full hover:bg-gray-100 transition-colors"
+            >
+              <X className="h-4 w-4 text-gray-500" />
+            </button>
+            
+            <h3 className="text-lg font-semibold mb-4 pr-6">Cookie-Einstellungen</h3>
             
             <div className="space-y-4">
               <div className="flex items-center justify-between p-3 border rounded">
                 <div>
-                  <p className="font-medium">Notwendige Cookies</p>
-                  <p className="text-sm text-gray-600">
-                    Erforderlich für die Grundfunktionen der Website
+                  <p className="font-medium text-sm">Notwendige Cookies</p>
+                  <p className="text-xs text-gray-600">
+                    Erforderlich für die Grundfunktionen
                   </p>
                 </div>
                 <input
@@ -117,8 +125,8 @@ const CookieBanner = () => {
               
               <div className="flex items-center justify-between p-3 border rounded">
                 <div>
-                  <p className="font-medium">Analyse-Cookies</p>
-                  <p className="text-sm text-gray-600">
+                  <p className="font-medium text-sm">Analyse-Cookies</p>
+                  <p className="text-xs text-gray-600">
                     Helfen uns, die Website zu verbessern
                   </p>
                 </div>
@@ -134,7 +142,8 @@ const CookieBanner = () => {
               <Button
                 variant="outline"
                 onClick={() => setShowSettings(false)}
-                className="flex-1"
+                className="flex-1 text-sm"
+                size="sm"
               >
                 Abbrechen
               </Button>
@@ -143,7 +152,8 @@ const CookieBanner = () => {
                   const analytics = (document.getElementById('analytics') as HTMLInputElement)?.checked || false;
                   saveSettings({ necessary: true, analytics });
                 }}
-                className="flex-1 bg-[#8B1538] hover:bg-[#8B1538]/90"
+                className="flex-1 bg-[#8B1538] hover:bg-[#8B1538]/90 text-sm"
+                size="sm"
               >
                 Speichern
               </Button>
