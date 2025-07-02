@@ -4,9 +4,10 @@ import { motion } from 'framer-motion';
 
 interface PageTransitionProps {
   children: ReactNode;
+  onAnimationComplete?: () => void;
 }
 
-const PageTransition = ({ children }: PageTransitionProps) => {
+const PageTransition = ({ children, onAnimationComplete }: PageTransitionProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -16,6 +17,7 @@ const PageTransition = ({ children }: PageTransitionProps) => {
         duration: 0.8,
         ease: "easeInOut"
       }}
+      onAnimationComplete={onAnimationComplete}
       className="w-full min-h-screen"
     >
       {children}

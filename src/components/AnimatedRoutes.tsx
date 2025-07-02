@@ -1,7 +1,6 @@
 
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import { useEffect } from "react";
 import PageTransition from "./PageTransition";
 import { useAnalytics } from "@/hooks/useAnalytics";
 import Index from "@/pages/Index";
@@ -21,26 +20,25 @@ const AnimatedRoutes = () => {
   const location = useLocation();
   useAnalytics();
   
-  // Scroll to top when route changes
-  useEffect(() => {
+  const handleAnimationComplete = () => {
     window.scrollTo(0, 0);
-  }, [location]);
+  };
   
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<PageTransition><Index /></PageTransition>} />
-        <Route path="/impressum" element={<PageTransition><Impressum /></PageTransition>} />
-        <Route path="/datenschutz" element={<PageTransition><Datenschutz /></PageTransition>} />
-        <Route path="/cookies" element={<PageTransition><Cookies /></PageTransition>} />
-        <Route path="/services/netzwerkloesungen" element={<PageTransition><Netzwerkloesungen /></PageTransition>} />
-        <Route path="/services/it-support" element={<PageTransition><ITSupport /></PageTransition>} />
-        <Route path="/services/cloud-loesungen" element={<PageTransition><CloudLoesungen /></PageTransition>} />
-        <Route path="/services/sicherheitsloesungen" element={<PageTransition><Sicherheitsloesungen /></PageTransition>} />
-        <Route path="/services/server-management" element={<PageTransition><ServerManagement /></PageTransition>} />
-        <Route path="/services/it-beratung" element={<PageTransition><ITBeratung /></PageTransition>} />
-        <Route path="/services/individuelle-loesungen" element={<PageTransition><IndividuelleLösungen /></PageTransition>} />
-        <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
+        <Route path="/" element={<PageTransition onAnimationComplete={handleAnimationComplete}><Index /></PageTransition>} />
+        <Route path="/impressum" element={<PageTransition onAnimationComplete={handleAnimationComplete}><Impressum /></PageTransition>} />
+        <Route path="/datenschutz" element={<PageTransition onAnimationComplete={handleAnimationComplete}><Datenschutz /></PageTransition>} />
+        <Route path="/cookies" element={<PageTransition onAnimationComplete={handleAnimationComplete}><Cookies /></PageTransition>} />
+        <Route path="/services/netzwerkloesungen" element={<PageTransition onAnimationComplete={handleAnimationComplete}><Netzwerkloesungen /></PageTransition>} />
+        <Route path="/services/it-support" element={<PageTransition onAnimationComplete={handleAnimationComplete}><ITSupport /></PageTransition>} />
+        <Route path="/services/cloud-loesungen" element={<PageTransition onAnimationComplete={handleAnimationComplete}><CloudLoesungen /></PageTransition>} />
+        <Route path="/services/sicherheitsloesungen" element={<PageTransition onAnimationComplete={handleAnimationComplete}><Sicherheitsloesungen /></PageTransition>} />
+        <Route path="/services/server-management" element={<PageTransition onAnimationComplete={handleAnimationComplete}><ServerManagement /></PageTransition>} />
+        <Route path="/services/it-beratung" element={<PageTransition onAnimationComplete={handleAnimationComplete}><ITBeratung /></PageTransition>} />
+        <Route path="/services/individuelle-loesungen" element={<PageTransition onAnimationComplete={handleAnimationComplete}><IndividuelleLösungen /></PageTransition>} />
+        <Route path="*" element={<PageTransition onAnimationComplete={handleAnimationComplete}><NotFound /></PageTransition>} />
       </Routes>
     </AnimatePresence>
   );
