@@ -1,13 +1,17 @@
-
+import { useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Cookie, Settings, Shield, CheckCircle, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Footer from "@/components/home/Footer";
 import { loadGAScript, enableGA, disableGA } from "@/utils/analytics";
 import { useToast } from "@/hooks/use-toast";
 
 const Cookies = () => {
+  useEffect(() => {
+    document.title = "Cookies | exis Solutions";
+  }, []);
+
   const [cookieSettings, setCookieSettings] = useState({
     necessary: true,
     analytics: false

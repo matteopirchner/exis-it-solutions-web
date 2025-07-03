@@ -1,10 +1,15 @@
 
+import { useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Shield, Lock, Eye, FileText, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import Footer from "@/components/home/Footer";
 
 const Datenschutz = () => {
+  useEffect(() => {
+    document.title = "Datenschutz | exis Solutions";
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}

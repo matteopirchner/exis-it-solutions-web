@@ -1,4 +1,5 @@
 
+import { useEffect } from 'react';
 import CookieBanner from "@/components/CookieBanner";
 import Navigation from "@/components/home/Navigation";
 import HeroSection from "@/components/home/HeroSection";
@@ -11,6 +12,10 @@ import ContactSection from "@/components/home/ContactSection";
 import Footer from "@/components/home/Footer";
 
 const Index = () => {
+  useEffect(() => {
+    document.title = "Start | exis Solutions";
+  }, []);
+
   const smoothScroll = (elementId: string) => {
     if (elementId === 'top') {
       window.scrollTo({
