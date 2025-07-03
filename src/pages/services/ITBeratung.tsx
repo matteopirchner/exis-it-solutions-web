@@ -1,4 +1,4 @@
-
+import { useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Settings, ArrowLeft, Lightbulb, Target, Users } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -7,6 +7,10 @@ import CookieBanner from "@/components/CookieBanner";
 import Footer from "@/components/home/Footer";
 
 const ITBeratung = () => {
+  useEffect(() => {
+    document.title = "IT-Beratung | exis Solutions";
+  }, []);
+
   const smoothScroll = (elementId: string) => {
     const element = document.getElementById(elementId);
     if (element) {
