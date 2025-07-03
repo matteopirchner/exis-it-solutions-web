@@ -1,6 +1,7 @@
 
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { trackEvent } from "@/utils/analytics";
 
 const NotFound = () => {
   const location = useLocation();
@@ -14,6 +15,9 @@ const NotFound = () => {
       "404 Error: User attempted to access non-existent route:",
       location.pathname
     );
+    
+    // Track 404 errors in Google Analytics
+    trackEvent('404_error', 'navigation', location.pathname);
   }, [location.pathname]);
 
   return (

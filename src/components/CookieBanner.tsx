@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { loadGAScript, enableGA, disableGA } from "@/utils/analytics";
+import { loadGAScript, enableGA, disableGA, trackEvent } from "@/utils/analytics";
 
 const CookieBanner = () => {
   const [showBanner, setShowBanner] = useState(false);
@@ -32,6 +32,9 @@ const CookieBanner = () => {
     // Load and initialize Google Analytics
     loadGAScript();
     enableGA();
+    
+    // Track cookie acceptance
+    trackEvent('cookie_consent', 'user_interaction', 'accept_all');
   };
 
   const acceptNecessary = () => {
@@ -44,6 +47,9 @@ const CookieBanner = () => {
     
     // Disable Analytics if it was previously enabled
     disableGA();
+    
+    // Track cookie rejection (this won't be tracked if analytics is disabled)
+    trackEvent('cookie_consent', 'user_interaction', 'accept_necessary_only');
   };
 
   const saveSettings = (settings: { necessary: boolean; analytics: boolean }) => {
@@ -58,8 +64,10 @@ const CookieBanner = () => {
     if (settings.analytics) {
       loadGAScript();
       enableGA();
+      trackEvent('cookie_consent', 'user_interaction', 'custom_settings_analytics_enabled');
     } else {
       disableGA();
+      trackEvent('cookie_consent', 'user_interaction', 'custom_settings_analytics_disabled');
     }
   };
 

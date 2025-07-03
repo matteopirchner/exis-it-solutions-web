@@ -1,5 +1,6 @@
 
 import { useEffect } from 'react';
+import { trackEvent } from "@/utils/analytics";
 import CookieBanner from "@/components/CookieBanner";
 import Navigation from "@/components/home/Navigation";
 import HeroSection from "@/components/home/HeroSection";
@@ -32,6 +33,9 @@ const Index = () => {
         top: offsetTop,
         behavior: 'smooth'
       });
+      
+      // Track scroll navigation in Google Analytics
+      trackEvent('scroll_navigation', 'navigation', elementId);
     }
   };
 
