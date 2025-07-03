@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -44,24 +43,41 @@ const ContactForm = () => {
     setIsSubmitting(true);
 
     try {
-      // Simulate form submission - in production, this would send an email to office@exis.at
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      toast({
-        title: "Nachricht gesendet",
-        description: "Vielen Dank für Ihre Nachricht. Wir werden uns schnellstmöglich bei Ihnen melden.",
+      // Create FormData for FormSubmit
+      const submitData = new FormData();
+      submitData.append('name', formData.name);
+      submitData.append('email', formData.email);
+      submitData.append('subject', formData.subject);
+      submitData.append('message', formData.message);
+      submitData.append('_captcha', 'false'); // Disable FormSubmit's captcha since we have our own
+      submitData.append('_template', 'table'); // Use table template for better formatting
+      submitData.append('_next', window.location.origin + '/?success=true'); // Redirect back to homepage with success parameter
+
+      const response = await fetch('https://formsubmit.co/office@exis.at', {
+        method: 'POST',
+        body: submitData
       });
-      
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-        privacy: false
-      });
-      resetCaptcha();
+
+      if (response.ok) {
+        toast({
+          title: "Nachricht gesendet",
+          description: "Vielen Dank für Ihre Nachricht. Wir werden uns schnellstmöglich bei Ihnen melden.",
+        });
+        
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+          privacy: false
+        });
+        resetCaptcha();
+      } else {
+        throw new Error('FormSubmit response not ok');
+      }
     } catch (error) {
+      console.error('FormSubmit error:', error);
       toast({
         title: "Fehler",
         description: "Beim Senden der Nachricht ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
