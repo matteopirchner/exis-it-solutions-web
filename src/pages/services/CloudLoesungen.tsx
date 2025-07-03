@@ -6,6 +6,13 @@ import ContactForm from "@/components/ContactForm";
 import CookieBanner from "@/components/CookieBanner";
 import Footer from "@/components/home/Footer";
 
+
+const CloudLoesungen = () => {
+  useEffect(() => {
+    document.title = "Hosting | exis Solutions";
+  }, []);
+
+
 const CloudLoesungen = () => {
   const smoothScroll = (elementId: string) => {
     const element = document.getElementById(elementId);
