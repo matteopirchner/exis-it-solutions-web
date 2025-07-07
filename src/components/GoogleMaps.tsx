@@ -40,7 +40,7 @@ const GoogleMaps = () => {
   return (
     <div className="w-full h-64 rounded-lg overflow-hidden">
       <iframe
-        src="https://www.google.com/maps/place/Hofmark+156,+5622+Goldegg/@47.3138031,13.0962297,17z/data=!3m1!4b1!4m6!3m5!1s0x4777274ed5ea3509:0xb23eff9a3c9f00ac!8m2!3d47.3137995!4d13.0988046!16s%2Fg%2F11sv_t_fcz?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D"
+        src="https://www.google.com/maps/place/Hofmark+156,+5622+Goldegg"
         width="100%"
         height="100%"
         style={{ border: 0 }}
