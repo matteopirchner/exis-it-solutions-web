@@ -21,7 +21,7 @@ const Navigation = ({ smoothScroll }: NavigationProps) => {
         <div className="flex items-center justify-between">
           <button onClick={() => smoothScroll('top')} className="flex items-center space-x-2 hover:scale-105 transition-transform duration-300">
             <img 
-              src="/images/og-image.png" 
+              src="/lovable-uploads/a4979dec-233f-4407-a953-c36de27959ab.png" 
               alt="exis Solutions" 
               className="h-12"
             />

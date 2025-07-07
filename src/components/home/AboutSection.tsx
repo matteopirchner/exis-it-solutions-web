@@ -22,7 +22,7 @@ const AboutSection = () => {
             <div className="relative group">
               <div className="absolute -inset-4 bg-gradient-to-r from-[#8B1538]/20 to-transparent rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
               <img 
-                src="/images/server-infrastructure.png" 
+                src="/lovable-uploads/ef49115e-c47a-4e3d-bd71-221f60451dae.png" 
                 alt="Server-Infrastruktur" 
                 className="relative rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-500"
               />

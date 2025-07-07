@@ -23,14 +23,14 @@ const ServicesSection = () => {
               {
                 title: "Netzwerklösungen",
                 description: "Planung, Installation und Wartung von Netzwerk-Infrastrukturen für optimale Konnektivität.",
-                image: "/images/network-solutions.png",
+                image: "/lovable-uploads/2ce30bf2-ca83-4c26-b6c7-c9e91e256ed0.png",
                 icon: <Network className="w-8 h-8" />,
                 link: "/services/netzwerkloesungen"
               },
               {
                 title: "IT-Support",
                 description: "Schnelle Hilfe bei IT-Problemen - vor Ort oder remote. Ihr zuverlässiger IT-Partner.",
-                image: "/images/it-support.png",
+                image: "/lovable-uploads/7b856886-75e6-4ed2-889b-761ab5eda86c.png",
                 icon: <Headphones className="w-8 h-8" />,
                 link: "/services/it-support"
               },
@@ -44,21 +44,21 @@ const ServicesSection = () => {
               {
                 title: "Sicherheitslösungen",
                 description: "Umfassende IT-Security-Konzepte zum Schutz Ihrer Daten und Systeme.",
-                image: "/images/security-solutions.png",
+                image: "/lovable-uploads/f924556c-da8a-4be4-ac24-bcfae1b5e9fa.png",
                 icon: <Shield className="w-8 h-8" />,
                 link: "/services/sicherheitsloesungen"
               },
               {
                 title: "Server-Management",
                 description: "Professionelle Verwaltung und Wartung Ihrer Server-Infrastruktur.",
-                image: "/images/server-management.png",
+                image: "/lovable-uploads/b4e37a6e-ccd1-4e28-ae38-f8fb3b22b264.png",
                 icon: <Server className="w-8 h-8" />,
                 link: "/services/server-management"
               },
               {
                 title: "IT-Beratung",
                 description: "Strategische Beratung für Ihre IT-Landschaft und digitale Transformation.",
-                image: "/images/it-consulting.png",
+                image: "/lovable-uploads/cfa8e99f-b09f-42a4-8d66-1dd218b41108.png",
                 icon: <Settings className="w-8 h-8" />,
                 link: "/services/it-beratung"
               },
