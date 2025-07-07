@@ -1,17 +1,31 @@
 
+import Card3D from "@/components/effects/Card3D";
+import ParallaxContainer from "@/components/effects/ParallaxContainer";
+import GlowingOrb from "@/components/effects/GlowingOrb";
+
 const FAQSection = () => {
   return (
-    <section id="faq" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+    <section id="faq" className="py-20 bg-white relative overflow-hidden">
+      {/* Background Effects */}
+      <GlowingOrb 
+        size={250} 
+        color="#8B1538" 
+        intensity={0.08}
+        className="bottom-0 left-0 animate-float"
+      />
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Häufig gestellte Fragen
-            </h2>
-            <p className="text-xl text-gray-600">
-              Antworten auf die wichtigsten Fragen zu unseren Services
-            </p>
-          </div>
+          <ParallaxContainer speed={0.1}>
+            <div className="text-center mb-16">
+              <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 transform-gpu hover:scale-105 transition-transform duration-300">
+                Häufig gestellte Fragen
+              </h2>
+              <p className="text-xl text-gray-600">
+                Antworten auf die wichtigsten Fragen zu unseren Services
+              </p>
+            </div>
+          </ParallaxContainer>
           
           <div className="space-y-6">
             {[
@@ -36,14 +50,14 @@ const FAQSection = () => {
                 answer: "Selbstverständlich! Wir bieten flexible Wartungsverträge, die präventive Wartung, Updates und Priority-Support umfassen."
               }
             ].map((faq, index) => (
-              <div key={index} className="group bg-gradient-to-r from-gray-50 to-white rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#8B1538]/20">
+              <Card3D key={index} intensity={0.8} className="group bg-gradient-to-r from-gray-50 to-white rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#8B1538]/20">
                 <h3 className="text-lg font-semibold text-gray-900 mb-3 group-hover:text-[#8B1538] transition-colors duration-300">
                   {faq.question}
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
                   {faq.answer}
                 </p>
-              </div>
+              </Card3D>
             ))}
           </div>
         </div>
