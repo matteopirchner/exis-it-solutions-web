@@ -18,7 +18,7 @@ const AboutSection = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative group">
               <div className="absolute -inset-4 bg-gradient-to-r from-[#8B1538]/20 to-transparent rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
               <img 
@@ -46,36 +46,6 @@ const AboutSection = () => {
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <p className="text-gray-600 mb-4">"Exis Solutions hat unsere komplette IT-Infrastruktur modernisiert. Hervorragender Service!"</p>
-              <p className="font-semibold text-gray-900">- KMU Kunde</p>
-            </div>
-            <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <p className="text-gray-600 mb-4">"Nextcloud Setup war perfekt. Endlich unabhängig von Microsoft Teams!"</p>
-              <p className="font-semibold text-gray-900">- Privatkunde</p>
-            </div>
-            <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <p className="text-gray-600 mb-4">"24/7 Support funktioniert wirklich. Schnelle Hilfe bei allen Problemen."</p>
-              <p className="font-semibold text-gray-900">- Unternehmenskunde</p>
             </div>
           </div>
         </div>
