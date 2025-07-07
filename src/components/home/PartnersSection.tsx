@@ -1,4 +1,5 @@
 
+
 const PartnersSection = () => {
   return (
     <section className="py-16 bg-gradient-to-r from-[#8B1538] to-red-600 text-white">
@@ -58,14 +59,14 @@ const PartnersSection = () => {
                   <div className="space-y-3">
                     <div>
                       <h4 className="font-semibold text-lg mb-2">Bereitgestellte Services:</h4>
-                      <p className="text-white/90">exis stellt für die Kunden von Oala Labs die Infrastruktur für Websites, Webapps usw. an</p>
+                      <p className="text-white/90">Hosting-Partner für innovative Webprojekte und digitale Lösungen</p>
                     </div>
                   </div>
                 </div>
                 <div className="flex-shrink-0">
                   <div className="w-24 h-24 bg-white rounded-lg flex items-center justify-center p-3">
                     <img 
-                      src="/images/oala-labs-logo.png" 
+                      src="/lovable-uploads/103a0174-da37-418b-a98f-2999faa466f9.png" 
                       alt="Oala Labs Logo" 
                       className="w-full h-full object-contain"
                     />
@@ -81,3 +82,4 @@ const PartnersSection = () => {
 };
 
 export default PartnersSection;
+
