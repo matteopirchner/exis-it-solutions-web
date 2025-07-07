@@ -95,9 +95,9 @@ const Impressum = () => {
                       </h2>
                       <div className="bg-white rounded-xl p-6 shadow-sm">
                         <p className="font-semibold text-lg text-gray-900 mb-2">exis Solutions e.U.</p>
-                        <p className="text-gray-600">Inhaber: [Name]</p>
-                        <p className="text-gray-600">[Adresse]</p>
-                        <p className="text-gray-600">[PLZ] [Ort]</p>
+                        <p className="text-gray-600">Inhaber: Matteo Pirchner-Gratz</p>
+                        <p className="text-gray-600">Hofmark 156</p>
+                        <p className="text-gray-600">5622 Goldegg</p>
                         <p className="text-gray-600 font-medium">Österreich</p>
                       </div>
                     </div>
@@ -110,7 +110,7 @@ const Impressum = () => {
                       <div className="bg-white rounded-xl p-6 shadow-sm space-y-2">
                         <p className="flex items-center">
                           <span className="font-medium text-gray-900 w-20">Telefon:</span>
-                          <span className="text-gray-600">[Telefonnummer]</span>
+                          <span className="text-gray-600">+43 681 84662737</span>
                         </p>
                         <p className="flex items-center">
                           <span className="font-medium text-gray-900 w-20">E-Mail:</span>

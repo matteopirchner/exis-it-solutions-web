@@ -30,10 +30,15 @@ const ContactSection = () => {
                     <p className="text-gray-600">office@exis.at</p>
                   </div>
                   <div className="group">
+                    <h4 className="font-semibold text-gray-900 group-hover:text-[#8B1538] transition-colors duration-300">Telefon</h4>
+                    <p className="text-gray-600">+43 681 84662737</p>
+                  </div>
+                  <div className="group">
                     <h4 className="font-semibold text-gray-900 group-hover:text-[#8B1538] transition-colors duration-300">Adresse</h4>
                     <p className="text-gray-600">
                       exis Solutions e.U.<br />
-                      Pongau, Salzburg<br />
+                      Hofmark 156<br />
+                      5622 Goldegg<br />
                       Österreich
                     </p>
                   </div>

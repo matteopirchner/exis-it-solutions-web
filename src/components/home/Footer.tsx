@@ -1,4 +1,3 @@
-
 import { Link, useLocation } from "react-router-dom";
 import { Mail, MapPin, Phone, Instagram } from "lucide-react";
 
@@ -31,7 +30,7 @@ const Footer = ({ smoothScroll }: FooterProps) => {
                 />
               </Link>
               <p className="text-gray-400 mb-6 leading-relaxed">
-                Ihr verlässlicher Partner für professionelle IT-Lösungen in Pongau/Salzburg. 
+                Ihr verlässlicher Partner für professionelle IT-Lösungen in Goldegg/Salzburg. 
                 Von Netzwerken bis Hosting - wir machen Ihre IT zum Erfolgsfaktor.
               </p>
               
@@ -45,13 +44,13 @@ const Footer = ({ smoothScroll }: FooterProps) => {
                 </div>
                 <div className="flex items-center space-x-3 text-gray-400">
                   <Phone className="w-4 h-4" />
-                  <a href="tel:+43123123" className="hover:text-[#8B1538] transition-colors duration-200">
-                    +43 123123
+                  <a href="tel:+43681846627377" className="hover:text-[#8B1538] transition-colors duration-200">
+                    +43 681 84662737
                   </a>
                 </div>
                 <div className="flex items-center space-x-3 text-gray-400">
                   <MapPin className="w-4 h-4" />
-                  <span>St Johann</span>
+                  <span>Hofmark 156, 5622 Goldegg</span>
                 </div>
               </div>
 
