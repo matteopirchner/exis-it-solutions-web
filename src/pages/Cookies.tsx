@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Cookie, Settings, Shield, CheckCircle, ArrowLeft } from "lucide-react";
@@ -63,7 +64,7 @@ const Cookies = () => {
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center space-x-2">
               <img 
-                src="/lovable-uploads/a4979dec-233f-4407-a953-c36de27959ab.png" 
+                src="/images/og-image.png" 
                 alt="exis Solutions" 
                 className="h-12 hover:scale-105 transition-transform duration-300"
               />

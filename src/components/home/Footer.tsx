@@ -25,7 +25,7 @@ const Footer = ({ smoothScroll }: FooterProps) => {
             <div className="col-span-1 md:col-span-2">
               <Link to="/" className="inline-block" onClick={handleLogoClick}>
                 <img 
-                  src="/lovable-uploads/5e5dfe99-0eab-452e-b862-12cf25362854.png" 
+                  src="/images/og-image.png" 
                   alt="exis Solutions" 
                   className="h-12 mb-6 filter brightness-0 invert hover:opacity-80 transition-opacity duration-200"
                 />
