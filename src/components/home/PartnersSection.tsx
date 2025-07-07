@@ -11,24 +11,10 @@ const PartnersSection = () => {
             Vertrauen Sie auf bewährte Partnerschaften für umfassende Lösungen
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="space-y-8">
             {/* Skullracing */}
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/15 transition-all duration-300">
-              <div className="flex flex-col md:flex-row items-center gap-6">
-                <div className="flex-1 text-center md:text-left">
-                  <a 
-                    href="https://skullracing.at" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="hover:text-white/80 transition-colors duration-300"
-                  >
-                    <h3 className="text-2xl font-bold mb-4">Skullracing</h3>
-                  </a>
-                  <div>
-                    <h4 className="font-semibold text-lg mb-2">Bereitgestellte Services:</h4>
-                    <p className="text-white/90">Mailserver, Domain Management</p>
-                  </div>
-                </div>
+              <div className="flex flex-col items-center gap-6">
                 <div className="flex-shrink-0">
                   <a 
                     href="https://skullracing.at" 
@@ -45,26 +31,26 @@ const PartnersSection = () => {
                     </div>
                   </a>
                 </div>
+                <div className="text-center">
+                  <a 
+                    href="https://skullracing.at" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-white/80 transition-colors duration-300"
+                  >
+                    <h3 className="text-2xl font-bold mb-4">Skullracing</h3>
+                  </a>
+                  <div>
+                    <h4 className="font-semibold text-lg mb-2">Bereitgestellte Services:</h4>
+                    <p className="text-white/90">Mailserver, Domain Management</p>
+                  </div>
+                </div>
               </div>
             </div>
 
             {/* Oala Labs */}
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/15 transition-all duration-300">
-              <div className="flex flex-col md:flex-row items-center gap-6">
-                <div className="flex-1 text-center md:text-left">
-                  <a 
-                    href="https://www.oalalabs.com/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="hover:text-white/80 transition-colors duration-300"
-                  >
-                    <h3 className="text-2xl font-bold mb-4">Oala Labs</h3>
-                  </a>
-                  <div>
-                    <h4 className="font-semibold text-lg mb-2">Bereitgestellte Services:</h4>
-                    <p className="text-white/90">Hosting-Partner für innovative Webprojekte und digitale Lösungen</p>
-                  </div>
-                </div>
+              <div className="flex flex-col items-center gap-6">
                 <div className="flex-shrink-0">
                   <a 
                     href="https://www.oalalabs.com/" 
@@ -80,6 +66,20 @@ const PartnersSection = () => {
                       />
                     </div>
                   </a>
+                </div>
+                <div className="text-center">
+                  <a 
+                    href="https://www.oalalabs.com/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-white/80 transition-colors duration-300"
+                  >
+                    <h3 className="text-2xl font-bold mb-4">Oala Labs</h3>
+                  </a>
+                  <div>
+                    <h4 className="font-semibold text-lg mb-2">Bereitgestellte Services:</h4>
+                    <p className="text-white/90">Hosting-Partner für innovative Webprojekte und digitale Lösungen</p>
+                  </div>
                 </div>
               </div>
             </div>
