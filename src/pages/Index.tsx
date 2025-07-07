@@ -4,8 +4,8 @@ import { trackEvent } from "@/utils/analytics";
 import CookieBanner from "@/components/CookieBanner";
 import Navigation from "@/components/home/Navigation";
 import HeroSection from "@/components/home/HeroSection";
-import PartnersSection from "@/components/home/PartnersSection";
 import AboutSection from "@/components/home/AboutSection";
+import PartnersSection from "@/components/home/PartnersSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import NextcloudSection from "@/components/home/NextcloudSection";
 import FAQSection from "@/components/home/FAQSection";
@@ -43,8 +43,8 @@ const Index = () => {
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Navigation smoothScroll={smoothScroll} />
       <HeroSection smoothScroll={smoothScroll} />
-      <PartnersSection />
       <AboutSection />
+      <PartnersSection />
       <ServicesSection />
       <NextcloudSection smoothScroll={smoothScroll} />
       <FAQSection />
