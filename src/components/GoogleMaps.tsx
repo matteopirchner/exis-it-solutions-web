@@ -40,7 +40,7 @@ const GoogleMaps = () => {
   return (
     <div className="w-full h-64 rounded-lg overflow-hidden">
       <iframe
-        src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=Hofmark%20156%20Goldegg+()&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+        src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Hofmark%20156,%205622%20Goldegg+(exis%20Solutions%20e.%20U.)&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
         width="100%"
         height="100%"
         style={{ border: 0 }}
