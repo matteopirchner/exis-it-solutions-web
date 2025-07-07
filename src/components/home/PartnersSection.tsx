@@ -11,7 +11,7 @@ const PartnersSection = () => {
             Vertrauen Sie auf bewährte Partnerschaften für umfassende Lösungen
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="space-y-8">
             {/* Skullracing */}
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/15 transition-all duration-300">
               <div className="flex flex-col items-center gap-6">
