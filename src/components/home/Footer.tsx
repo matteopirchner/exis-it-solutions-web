@@ -1,3 +1,4 @@
+
 import { Link, useLocation } from "react-router-dom";
 import { Mail, MapPin, Phone, Instagram } from "lucide-react";
 
@@ -24,9 +25,9 @@ const Footer = ({ smoothScroll }: FooterProps) => {
             <div className="col-span-1 md:col-span-2">
               <Link to="/" className="inline-block" onClick={handleLogoClick}>
                 <img 
-                  src="/lovable-uploads/a4979dec-233f-4407-a953-c36de27959ab.png" 
+                  src="/lovable-uploads/5e5dfe99-0eab-452e-b862-12cf25362854.png" 
                   alt="exis Solutions" 
-                  className="h-12 mb-6 filter brightness-0 invert hover:opacity-80 transition-opacity duration-200"
+                  className="h-12 mb-6 hover:opacity-80 transition-opacity duration-200"
                 />
               </Link>
               <p className="text-gray-400 mb-6 leading-relaxed">
