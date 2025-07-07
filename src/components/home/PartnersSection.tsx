@@ -59,7 +59,7 @@ const PartnersSection = () => {
                   <div className="space-y-3">
                     <div>
                       <h4 className="font-semibold text-lg mb-2">Bereitgestellte Services:</h4>
-                      <p className="text-white/90">Hosting-Partner für innovative Webprojekte und digitale Lösungen</p>
+                      <p className="text-white/90">Exis ist Hosting-Partner für innovative Webprojekte und digitale Lösungen</p>
                     </div>
                   </div>
                 </div>
