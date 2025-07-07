@@ -38,7 +38,7 @@ const PartnersSection = () => {
                 >
                   <div className="w-24 h-24 bg-white rounded-lg flex items-center justify-center p-3">
                     <img 
-                      src="/lovable-uploads/0e4ad833-6d76-4491-85e9-23503238ab08.png" 
+                      src="/images/skullracing-logo.png" 
                       alt="Skullracing Logo" 
                       className="w-full h-full object-contain"
                     />
