@@ -18,20 +18,14 @@ const PartnersSection = () => {
                 <div className="space-y-3">
                   <div>
                     <h4 className="font-semibold text-lg mb-2">Bereitgestellte Services:</h4>
-                    <p className="text-white/90">Mailserver</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-lg mb-2">Unternehmensfokus:</h4>
-                    <p className="text-white/90">
-                      Spezialisiert auf maßgeschneiderte CNC-Bearbeitung und professionelle Pulverbeschichtung
-                    </p>
+                    <p className="text-white/90">Mailserver, Domain Management</p>
                   </div>
                 </div>
               </div>
               <div className="flex-shrink-0">
-                <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center p-2">
+                <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-2">
                   <img 
-                    src="/lovable-uploads/cfa8e99f-b09f-42a4-8d66-1dd218b41108.png" 
+                    src="/lovable-uploads/0e4ad833-6d76-4491-85e9-23503238ab08.png" 
                     alt="Skullracing Logo" 
                     className="w-full h-full object-contain"
                   />
