@@ -6,13 +6,15 @@ interface GlowingOrbProps {
   color?: string;
   intensity?: number;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 const GlowingOrb = ({ 
   size = 100, 
   color = '#8B1538', 
   intensity = 0.6,
-  className = "" 
+  className = "",
+  style = {}
 }: GlowingOrbProps) => {
   const orbRef = useRef<HTMLDivElement>(null);
 
@@ -42,6 +44,7 @@ const GlowingOrb = ({
         height: size,
         background: `radial-gradient(circle, ${color}40 0%, transparent 70%)`,
         filter: 'blur(20px)',
+        ...style
       }}
     />
   );
