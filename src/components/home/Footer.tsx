@@ -27,7 +27,7 @@ const Footer = ({ smoothScroll }: FooterProps) => {
                 <img 
                   src="/lovable-uploads/5e5dfe99-0eab-452e-b862-12cf25362854.png" 
                   alt="exis Solutions" 
-                  className="h-12 mb-6 hover:opacity-80 transition-opacity duration-200"
+                  className="h-12 mb-6 filter brightness-0 invert hover:opacity-80 transition-opacity duration-200"
                 />
               </Link>
               <p className="text-gray-400 mb-6 leading-relaxed">
